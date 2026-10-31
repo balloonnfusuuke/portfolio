@@ -317,6 +317,18 @@ var I18N = (function () {
         description: "A business card I designed with my own character. An NFC sticker on the back lets a phone read it.",
         tags: ["Design", "NFC"],
       },
+      "Baseball Trajectory Sim 3D": {
+        status: "Prototype · 2025 · Simplified physics",
+        description: "A simulator that computes batted-ball and pitch trajectories with gravity, drag and spin-induced lift, and draws them in a 3D ballpark. You can change exit velocity, spin rate and release point and see what happens.",
+      },
+      "Ballpark Buzz": {
+        status: "Prototype · 2025 · No public demo",
+        description: "A prototype location-based social app for baseball fans. Pick your team and post a short message from where you are; posts show up on a map as bubbles in team colors and sync in real time through Firestore.",
+      },
+      "Emotional Hue": {
+        status: "Prototype · 2025 · Entries saved on your device",
+        description: "An app for logging your mood by picking one of eight colors, with an optional short note. A chart shows how often each mood came up over the past 7 days. Entries are stored only in the browser (localStorage). Japanese/English UI, and it can be added to the home screen like an app (PWA manifest).",
+      },
     },
     PROJECT_GROUPS: [
       {
@@ -334,6 +346,10 @@ var I18N = (function () {
       {
         title: "A monitor I run for myself",
         lead: "Separate from baseball. A personal system I keep running so I can check it every day.",
+      },
+      {
+        title: "Small apps I've built",
+        lead: "Small personal prototypes, from a baseball physics simulator to a mood-logging app.",
       },
     ],
     // EXPERIENCE は data.js と同じ順番

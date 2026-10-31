@@ -168,6 +168,42 @@ const PROJECTS = [
     live: "",
     github: "",
   },
+  {
+    title: "Baseball Trajectory Sim 3D",
+    status: "試作 · 2025年 · 物理モデルは簡易版",
+    categories: ["baseball"],
+    image: "assets/projects/baseball-sim3d.png",
+    promo: "baseball-sim3d", // 操作デモ動画（ローカル実行を録画）
+    description:
+      "打球と投球の軌道を、重力・空気抵抗・回転による揚力で計算し、3Dの球場に描くシミュレーター。打球速度や回転数、リリース位置を変えて試せます。",
+    tags: ["TypeScript", "React Three Fiber", "three.js"],
+    live: "",
+    github: "https://github.com/balloonnfusuuke/baseball1.github.io",
+  },
+  {
+    title: "Ballpark Buzz",
+    status: "試作 · 2025年 · 公開デモなし",
+    categories: ["baseball"],
+    image: "assets/projects/ballpark-buzz.png",
+    promo: "ballpark-buzz", // 操作デモ動画（ローカル実行を録画）
+    description:
+      "野球ファンが応援チームを選び、今いる場所から短く投稿できる位置情報SNSの試作。投稿はチームカラーの吹き出しとして地図に並び、Firestoreでリアルタイムに共有されます。",
+    tags: ["TypeScript", "React", "Leaflet", "Firebase"],
+    live: "",
+    github: "https://github.com/balloonnfusuuke/baloowanns.github.io",
+  },
+  {
+    title: "Emotional Hue",
+    status: "試作 · 2025年 · 記録は端末内に保存",
+    categories: ["tools"],
+    image: "assets/projects/emotional-hue.png",
+    promo: "emotional-hue", // 操作デモ動画（ローカル実行を録画）
+    description:
+      "その時の気分を8つの色から選び、ひとことメモと一緒に記録するアプリ。過去7日間の気分の頻度をグラフで振り返れます。記録はブラウザ内（localStorage）だけに保存。日本語・英語に対応し、ホーム画面に追加してアプリのように使えます（PWAマニフェスト対応）。",
+    tags: ["TypeScript", "React", "Recharts", "PWA"],
+    live: "",
+    github: "https://github.com/balloonnfusuuke/Emotional-Hue",
+  },
 ];
 
 /* --- プロジェクトのまとまり ------------------------------------------------
@@ -197,6 +233,12 @@ const PROJECT_GROUPS = [
     title: "自分用の自動監視",
     lead: "野球とは別に、自分で毎日見るために動かしているシステムです。",
     titles: ["rakuten"],
+  },
+  {
+    id: "early",
+    title: "これまでに作った小さなアプリ",
+    lead: "野球の物理シミュレーションや、気分を記録するアプリなど、個人で作った小さな試作です。",
+    titles: ["Baseball Trajectory Sim 3D", "Ballpark Buzz", "Emotional Hue"],
   },
 ];
 
