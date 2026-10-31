@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja" data-i18n-page="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PitchLab（作成中）｜安田 風介</title>
+  <meta name="description" content="PitchLab：投手の新しい変化球を探すための全身物理シミュレーション。MuJoCoで研究用モーションキャプチャを動かし、指・手首・縫い目・摩擦まで再現。現在は直球の再現を検証中です。">
+  <meta property="og:title" content="PitchLab（作成中）｜安田 風介">
+  <meta property="og:description" content="投手の新しい変化球を探すための全身物理シミュレーション。現在の検証状況と、わかったこと。">
+  <meta property="og:image" content="assets/pitchlab/card.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fff' stroke='%231B2A4A' stroke-width='6'/%3E%3Cpath d='M16 32C36 44 64 44 84 32M16 68C36 56 64 56 84 68' fill='none' stroke='%23C9A227' stroke-width='6' stroke-dasharray='5 3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pitchlab.css">
+  <script>
+    (function () {
+      var lang = "ja";
+      try {
+        var saved = window.localStorage.getItem("fy-lang");
+        if (saved === "ja" || saved === "en") { lang = saved; }
+        else {
+          var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "ja"];
+          lang = /^ja\b/i.test(String(list[0] || "")) ? "ja" : "en";
+        }
+      } catch (e) { /* noop */ }
+      window.__lang = lang;
+      document.documentElement.lang = lang;
+    })();
+  </script>
+</head>
+<body class="pl">
+  <header class="pl-top">
+    <div class="container pl-top__inner">
+      <a class="pl-back" href="index.html#wip" data-i18n="pl.00">← ポートフォリオに戻る</a>
+      <div class="pl-top__right">
+        <div class="lang-switch" role="group" aria-label="表示言語 / Language">
+          <button class="lang-switch__btn" type="button" data-lang="ja" lang="ja" aria-label="日本語で表示">JA</button>
+          <span class="lang-switch__sep" aria-hidden="true">/</span>
+          <button class="lang-switch__btn" type="button" data-lang="en" lang="en" aria-label="View in English">EN</button>
+        </div>
+        <span class="pl-top__mark">FY</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== ヒーロー ==================== -->
+    <section class="pl-hero">
+      <div class="container">
+        <p class="section__eyebrow" data-i18n="pl.01">Projects / 作成中</p>
+        <h1 class="pl-hero__title">PitchLab</h1>
+        <p class="pl-hero__lead" data-i18n="pl.02">投手の新しい変化球を、体ごと物理シミュレーションして探すための研究用ツールです。まだ完成していません。いまは「直球を正しく投げられるか」を確かめている段階です。</p>
+        <ul class="pl-facts">
+          <li data-i18n="pl.03"><span>状態</span>作成中（ステージ1：直球の検証中）</li>
+          <li data-i18n="pl.04"><span>物理エンジン</span>MuJoCo</li>
+          <li data-i18n="pl.05"><span>動き</span>研究用モーションキャプチャ</li>
+          <li data-i18n="pl.06"><span>実戦での利用</span>なし（チームでの導入実績はありません）</li>
+        </ul>
+
+        <!-- ヒーロー動画：assets/pitchlab/pitchlab_showcase.mp4 -->
+        <figure class="pl-media pl-media--hero" id="plHero">
+          <video id="plHeroVideo" src="assets/pitchlab/pitchlab_showcase.mp4" poster="assets/pitchlab/pitchlab_showcase.jpg" controls muted playsinline preload="metadata"></video>
+          <figcaption id="plHeroCaption" data-i18n="pl.showcaseCap">PitchLab 紹介動画（約30秒）</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <nav class="pl-toc container" aria-label="このページの目次" data-i18n-attr="aria-label=pl.tocLabel" data-i18n="pl.08">
+      <a href="#purpose">目的</a><a href="#how">しくみ</a><a href="#criteria">合格ライン</a><a href="#status">現状</a><a href="#videos">動画</a><a href="#next">次にやること</a><a href="#stack">技術</a><a href="#roadmap">ロードマップ</a><a href="#learned">学んだこと</a>
+    </nav>
+
+    <!-- ==================== 目的 ==================== -->
+    <section class="pl-sec container" id="purpose">
+      <h2 class="pl-h2" data-i18n="pl.09"><span>01</span>目的 — 新しい変化球を探す</h2>
+      <p data-i18n="pl.10">変化球は、握り・手首の向き・指の抜け方のわずかな違いで別物になります。でも、新しい握りを実際に試すには投げ込みが必要で、肩や肘への負担もかかります。</p>
+      <p data-i18n="pl.11">PitchLab は、それを「体ごと」コンピュータの中で試せるようにするためのものです。腕だけでなく全身の動きから、指先がボールにどう触れて、どんな回転と速度で離れるかを物理的に計算します。最終的には、まだ名前のない変化球の候補を、投手が実際に試す前に絞り込めるようにすることが目標です。</p>
+      <p class="pl-note" data-i18n="pl.12">いまはその前提となる「既存の直球を正しく再現できるか」を検証している段階です。新しい変化球はまだ一つも見つかっていません。</p>
+    </section>
+
+    <!-- ==================== しくみ ==================== -->
+    <section class="pl-sec container" id="how">
+      <h2 class="pl-h2" data-i18n="pl.13"><span>02</span>しくみ</h2>
+      <div class="pl-grid">
+        <article class="pl-card"><h3 data-i18n="pl.14">全身の物理シミュレーション</h3><p data-i18n="pl.15">物理エンジン MuJoCo の上に、投手の全身モデルを組んでいます。足を踏み出してから球が離れるまで、関節のトルクと接触をすべて物理として計算します。</p></article>
+        <article class="pl-card"><h3 data-i18n="pl.16">研究用モーションキャプチャで動かす</h3><p data-i18n="pl.17">体の動きは、研究で計測された投球のモーションキャプチャデータを目標にして動かします。動きを手で作り込まず、実際の投手の動きに沿わせるためです。</p></article>
+        <article class="pl-card"><h3 data-i18n="pl.18">肩甲骨と、分節した背骨</h3><p data-i18n="pl.19">肩は腕の付け根だけでは回りません。肩甲骨を独立して動かし、背骨も複数の節に分けて、体幹のしなりが腕に伝わるようにしています。</p></article>
+        <article class="pl-card"><h3 data-i18n="pl.20">5本の指・手首・縫い目・摩擦</h3><p data-i18n="pl.21">手は5本の指と手首まで関節を持たせ、ボールには縫い目を付けています。指と革の間の摩擦で回転がかかるので、ここが回転数を決める一番大事な部分です。</p></article>
+        <article class="pl-card pl-card--wide"><h3 data-i18n="pl.22">ボールの値（NPB と MLB）</h3><p data-i18n="pl.23">ボールの大きさ・重さなどは、日本のプロ野球（NPB）の公認球の値を使っています。日本の公開データが見つからなかった項目だけ、MLB の値で代用しています。どの値が代用なのかは、コードとメモの中で明記して区別しています。</p></article>
+      </div>
+    </section>
+
+    <!-- ==================== 合格ライン ==================== -->
+    <section class="pl-sec container" id="criteria">
+      <h2 class="pl-h2" data-i18n="pl.24"><span>03</span>段階ごとの合格ライン</h2>
+      <p data-i18n="pl.25">「それっぽく動く」で終わらせないために、先に数字で合格ラインを決め、満たすまで次に進まないことにしています。</p>
+      <div class="pl-stages">
+        <article class="pl-stage is-current">
+          <p class="pl-stage__tag" data-i18n="pl.26">ステージ1・いまここ</p>
+          <h3 data-i18n="pl.27">直球</h3>
+          <ul>
+            <li data-i18n="pl.28">リリースの角度が実際の投手の範囲に入る</li>
+            <li data-i18n="pl.29">球速 135〜150 km/h</li>
+            <li data-i18n="pl.30">回転数 2,100〜2,500 rpm</li>
+            <li data-i18n="pl.31">肩・肘などの関節負荷が研究値の 1.5 倍以内</li>
+          </ul>
+        </article>
+        <article class="pl-stage">
+          <p class="pl-stage__tag" data-i18n="pl.32">ステージ2・未着手</p>
+          <h3 data-i18n="pl.33">変化球</h3>
+          <ul>
+            <li data-i18n="pl.34">既存の変化球を再現し、回転が実測の ±15% 以内に入る</li>
+            <li data-i18n="pl.35">ここを満たしてから、新しい握りの探索に進む</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ==================== 現状 ==================== -->
+    <section class="pl-sec container" id="status">
+      <h2 class="pl-h2" data-i18n="pl.36"><span>04</span>現状と、わかったこと</h2>
+      <p data-i18n="pl.37">正直に書くと、ステージ1はまだ通っていません。途中で「できた」と思った結果が、実は間違いだったこともありました。</p>
+
+      <h3 class="pl-h3" data-i18n="pl.38">以前の約 2,000 rpm は「偽物」だった</h3>
+      <p data-i18n="pl.39">初期の試行で約 2,000 rpm が出ていましたが、映像を細かく見ると、リリースの瞬間に指がボールを叩いて（はたいて）回転をかけていただけでした。実際の投手の指の使い方ではないので、この数字は捨てました。</p>
+
+      <h3 class="pl-h3" data-i18n="pl.40">主な試行の結果</h3>
+      <div class="pl-table-wrap">
+        <table class="pl-table">
+          <thead data-i18n="pl.41"><tr><th>試行</th><th>球速</th><th>回転数</th><th>回転軸</th><th>リリース角</th></tr></thead>
+          <tbody>
+            <tr data-i18n="pl.42"><td>指をボールに添えたまま離す（叩かない）</td><td>41.4 m/s<small>（約149 km/h）</small></td><td>1,075 rpm</td><td>12:48</td><td>5.1° 下向き</td></tr>
+            <tr data-i18n="pl.43"><td>f4</td><td>39.0 m/s<small>（約140 km/h）</small></td><td>1,929 rpm</td><td>1:06</td><td>6.3° 下向き</td></tr>
+            <tr class="pl-table__goal" data-i18n="pl.44"><td>ステージ1の合格ライン</td><td>135〜150 km/h</td><td>2,100〜2,500 rpm</td><td>—</td><td>実投手の範囲</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pl-small" data-i18n="pl.45">km/h は m/s から換算した参考値です。</p>
+
+      <ul class="pl-findings">
+        <li data-i18n="pl.46"><strong>球速は範囲に入りつつある。</strong>どちらの試行も 135〜150 km/h に収まっています。</li>
+        <li data-i18n="pl.47"><strong>回転数が足りない。</strong>指を叩かせない正しい離し方だと 1,075 rpm。f4 で 1,929 rpm まで上がりましたが、まだ 2,100 rpm に届いていません。</li>
+        <li data-i18n="pl.48"><strong>関節の負荷が大きすぎる。</strong>肩と肘の負荷が研究値の約 1.6〜2 倍で、合格ライン（1.5 倍以内）を超えています。</li>
+        <li data-i18n="pl.49"><strong>親指がリリースでボールに触れていない。</strong>実際の直球では親指も支えに使うので、ここが回転不足の原因の一つだと考えています。</li>
+      </ul>
+    </section>
+
+    <!-- ==================== 動画 ==================== -->
+    <section class="pl-sec container" id="videos">
+      <h2 class="pl-h2" data-i18n="pl.50"><span>05</span>動画</h2>
+      <p data-i18n="pl.51">どちらもシミュレーションの出力をそのまま書き出したものです（スロー再生）。</p>
+      <div class="pl-videos">
+        <figure class="pl-media">
+          <video src="assets/pitchlab/f4-full.mp4" poster="assets/pitchlab/f4-full.jpg" controls muted playsinline preload="none"></video>
+          <figcaption data-i18n="pl.52"><b>f4 の直球（全身）</b> 39.0 m/s・1,929 rpm・回転軸 1:06・6.3° 下向き。</figcaption>
+        </figure>
+        <figure class="pl-media">
+          <video src="assets/pitchlab/f4-release.mp4" poster="assets/pitchlab/f4-release.jpg" controls muted playsinline loop preload="none"></video>
+          <figcaption data-i18n="pl.53"><b>f4 のリリース（手元の拡大）</b> 指が縫い目にかかって球が離れる瞬間。</figcaption>
+        </figure>
+        <figure class="pl-media">
+          <video src="assets/pitchlab/held-full.mp4" poster="assets/pitchlab/held-full.jpg" controls muted playsinline preload="none"></video>
+          <figcaption data-i18n="pl.54"><b>指を添えたまま離す直球（全身）</b> 指で叩かない離し方。41.4 m/s・1,075 rpm・回転軸 12:48・5.1° 下向き。</figcaption>
+        </figure>
+        <figure class="pl-media">
+          <video src="assets/pitchlab/held-release.mp4" poster="assets/pitchlab/held-release.jpg" controls muted playsinline loop preload="none"></video>
+          <figcaption data-i18n="pl.55"><b>指を添えたまま離す直球（リリースの拡大）</b> 球が離れるまで指が触れ続けている様子。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== 次にやること ==================== -->
+    <section class="pl-sec container" id="next">
+      <h2 class="pl-h2" data-i18n="pl.56"><span>06</span>次にやること</h2>
+      <ol class="pl-steps">
+        <li data-i18n="pl.57"><strong>皮膚と革の摩擦を実測値に合わせる。</strong>Yamaguchi（2020・2022）の測定値を使います：乾いた状態 1.12、ロジン（粉）あり 0.76、濡れた状態 0.42。</li>
+        <li data-i18n="pl.58"><strong>親指に CMC 関節（付け根の関節）を加える。</strong>親指がリリースまでボールを支えられるようにします。</li>
+        <li data-i18n="pl.59"><strong>ステージ1を通ったら、ステージ2（変化球）へ。</strong></li>
+      </ol>
+    </section>
+
+    <!-- ==================== 技術 ==================== -->
+    <section class="pl-sec container" id="stack">
+      <h2 class="pl-h2" data-i18n="pl.60"><span>07</span>使っている技術</h2>
+      <ul class="project-card__tags pl-tags" data-i18n="pl.61"><li>MuJoCo</li><li>Python</li><li>モーションキャプチャ（研究データ）</li><li>接触・摩擦モデル</li><li>FFmpeg（動画の書き出し）</li></ul>
+    </section>
+
+    <!-- ==================== ロードマップ ==================== -->
+    <section class="pl-sec container" id="roadmap">
+      <h2 class="pl-h2" data-i18n="pl.62"><span>08</span>ロードマップ</h2>
+      <ol class="pl-road">
+        <li class="is-done" data-i18n="pl.63"><b>済</b>全身モデル（肩甲骨・分節した背骨・5本の指・手首）と、縫い目のあるボール</li>
+        <li class="is-done" data-i18n="pl.64"><b>済</b>モーションキャプチャで全身を動かし、球を投げられるようにする</li>
+        <li class="is-now" data-i18n="pl.65"><b>今</b>ステージ1：直球を合格ラインに入れる（回転数・関節負荷が未達）</li>
+        <li data-i18n="pl.66"><b>次</b>ステージ2：既存の変化球を回転 ±15% 以内で再現</li>
+        <li data-i18n="pl.67"><b>先</b>新しい握り・リリースを探索して、変化球の候補を出す</li>
+      </ol>
+    </section>
+
+    <!-- ==================== 学んだこと ==================== -->
+    <section class="pl-sec container" id="learned">
+      <h2 class="pl-h2" data-i18n="pl.68"><span>09</span>学んだこと</h2>
+      <ul class="pl-findings">
+        <li data-i18n="pl.69"><strong>良い数字ほど疑う。</strong>約 2,000 rpm は合格に近く見えましたが、映像を見たら指で叩いていただけでした。数字だけでなく、動きそのものを確認するようにしています。</li>
+        <li data-i18n="pl.70"><strong>合格ラインを先に決める。</strong>基準を先に置いたことで、「まだ届いていない」とはっきり言えるようになりました。</li>
+        <li data-i18n="pl.71"><strong>代用した値は隠さない。</strong>日本のデータが無いところは MLB の値を使い、それを明記しています。どこまでが確かな値かが分からないと、結果も信用できないからです。</li>
+        <li data-i18n="pl.72"><strong>回転は指先だけで決まらない。</strong>親指の支えや皮膚と革の摩擦など、小さな部分が回転数を大きく左右することが分かってきました。</li>
+      </ul>
+    </section>
+
+    <div class="container pl-end">
+      <a class="pl-back pl-back--big" href="index.html#wip" data-i18n="pl.00">← ポートフォリオに戻る</a>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container footer__inner"><p class="footer__note">&copy; 2026 Fusuke Yasuda</p></div></footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

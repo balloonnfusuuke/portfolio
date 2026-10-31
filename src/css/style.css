@@ -2929,3 +2929,63 @@ html[lang="en"] .about__id-en { font-family: var(--font-body); font-size: 0.9375
 @media (prefers-reduced-motion: reduce) {
   .promo-modal, .promo-modal__panel { transition: none; }
 }
+
+/* ==========================================================================
+   作成中（PitchLab）カード — 既存のカードと同じ形。カード全体を詳細ページへのリンクにする
+   ========================================================================== */
+.project-group--wip { margin-top: var(--sp-9); padding-top: var(--sp-7); border-top: var(--hairline) solid var(--line); }
+.project-card--wip { position: relative; opacity: 1; }
+.project-card__cover { color: inherit; text-decoration: none; }
+.project-card__cover::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+.project-card__cover:focus-visible { outline: none; }
+.project-card--wip:focus-within { outline: 2px solid var(--gold); outline-offset: 3px; }
+.project-card--wip .project-card__links { position: relative; z-index: 3; }
+
+/* v12：作成中カード（PitchLab）
+   白い角丸の枠は全カード共通の .project-card__thumb::after（白85%の飾り枠）。
+   他のカードは明るいスクリーンショットなので目立たないが、PitchLab の暗い画像では浮いて見えるため、このカードだけ消す。 */
+.project-card--wip .project-card__thumb::after { display: none; }
+
+/* サムネイル中央の再生マーク（動画があることのヒント・飾り） */
+.project-card__peek {
+  position: absolute; left: 50%; top: 50%; z-index: 2;
+  width: 56px; height: 56px; margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  background: rgba(27, 42, 74, 0.72);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.55), 0 6px 18px rgba(0,0,0,.25);
+  backdrop-filter: blur(2px);
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+  pointer-events: none;
+}
+.project-card__peek::before {
+  content: ""; position: absolute; left: 22px; top: 18px;
+  border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+}
+.project-card--wip:hover .project-card__peek { transform: scale(1.08); background: rgba(27, 42, 74, 0.86); }
+
+/* 目立つ CTA ボタン */
+.project-card__link--cta {
+  position: relative; z-index: 3;
+  margin-top: var(--sp-6);
+  padding: 12px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 0 var(--gold-line);
+  transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease), background var(--dur-2) var(--ease);
+}
+.project-card__link--cta::after { color: var(--gold); }
+.project-card--wip:hover .project-card__link--cta,
+.project-card__link--cta:hover,
+.project-card__link--cta:focus-visible {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(201, 162, 39, 0.35), 0 0 0 3px var(--gold-tint);
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-card__link--cta, .project-card__peek { transition: none; }
+  .project-card--wip:hover .project-card__link--cta { transform: none; }
+}

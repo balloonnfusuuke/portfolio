@@ -131,6 +131,94 @@ var I18N = (function () {
     "activity.dow5": "Fri",
   };
 
+  /* --- 作成中セクションと PitchLab ページ（英語） --- */
+  var EN_PAGES = {
+      "pl.00": "← Back to portfolio",
+      "pl.01": "Projects / In progress",
+      "pl.02": "A research tool for finding new pitches by physically simulating a pitcher's whole body. It isn't finished. Right now I'm checking whether it can throw a realistic fastball.",
+      "pl.03": "<span>Status</span>In progress (Stage 1: testing the fastball)",
+      "pl.04": "<span>Physics engine</span>MuJoCo",
+      "pl.05": "<span>Motion</span>Research motion-capture data",
+      "pl.06": "<span>Real-world use</span>None (no team uses it)",
+      "pl.07": "Trial f4 fastball (full body, slow motion). Left: side view. Right: from behind the pitcher. 39.0 m/s, 1,929 rpm, spin axis 1:06.",
+      "pl.08": "<a href=\"#purpose\">Purpose</a><a href=\"#how\">How it works</a><a href=\"#criteria\">Pass criteria</a><a href=\"#status\">Status</a><a href=\"#videos\">Videos</a><a href=\"#next\">Next steps</a><a href=\"#stack\">Tech</a><a href=\"#roadmap\">Roadmap</a><a href=\"#learned\">What I learned</a>",
+      "pl.09": "<span>01</span>Purpose: finding new pitches",
+      "pl.10": "Small differences in grip, wrist angle and how the fingers come off the ball can turn one pitch into a completely different one. But trying a new grip for real takes a lot of throwing, which puts strain on the shoulder and elbow.",
+      "pl.11": "PitchLab is meant to let you try that inside a computer, with the whole body involved. Starting from full-body motion, not just the arm, it physically calculates how the fingertips touch the ball and the spin and speed it leaves with. The end goal is to narrow down candidates for pitches that don't exist yet, before a pitcher ever has to throw them.",
+      "pl.12": "For now I'm testing the prerequisite: can it reproduce an ordinary fastball correctly? It hasn't found a single new pitch yet.",
+      "pl.13": "<span>02</span>How it works",
+      "pl.14": "Full-body physics simulation",
+      "pl.15": "A full-body pitcher model built on the MuJoCo physics engine. From the stride to the release, every joint torque and contact is computed as physics.",
+      "pl.16": "Driven by research motion capture",
+      "pl.17": "The body tracks pitching motion-capture data recorded for research. Instead of hand-animating the motion, it follows how real pitchers move.",
+      "pl.18": "Shoulder blades and a segmented spine",
+      "pl.19": "A shoulder doesn't rotate from the arm socket alone. The shoulder blades move independently and the spine is split into several segments, so the trunk's whip carries into the arm.",
+      "pl.20": "Five fingers, wrist, seams and friction",
+      "pl.21": "The hand has jointed fingers and a wrist, and the ball has seams. Spin comes from friction between the fingers and the leather, so this is the part that matters most for spin rate.",
+      "pl.22": "Ball specs (NPB and MLB)",
+      "pl.23": "Size, weight and other ball properties come from the official ball of Japan's pro league (NPB). Only where I couldn't find public Japanese data do I substitute MLB values, and every substitute is clearly marked in the code and notes.",
+      "pl.24": "<span>03</span>Pass criteria, stage by stage",
+      "pl.25": "So it doesn't stop at \"looks about right,\" I set numeric pass criteria up front and don't move on until they're met.",
+      "pl.26": "Stage 1 · Current",
+      "pl.27": "Fastball",
+      "pl.28": "Release angle within the range of real pitchers",
+      "pl.29": "Velocity 135–150 km/h",
+      "pl.30": "Spin rate 2,100–2,500 rpm",
+      "pl.31": "Shoulder, elbow and other joint loads within 1.5× published research values",
+      "pl.32": "Stage 2 · Not started",
+      "pl.33": "Breaking balls",
+      "pl.34": "Reproduce existing breaking balls with spin within ±15% of measured values",
+      "pl.35": "Only after that, move on to searching for new grips",
+      "pl.36": "<span>04</span>Status and findings",
+      "pl.37": "To be honest, Stage 1 hasn't passed yet. One result I thought was a success turned out to be wrong.",
+      "pl.38": "The earlier ~2,000 rpm was fake",
+      "pl.39": "An early trial reached about 2,000 rpm, but frame-by-frame footage showed the fingers were just slapping the ball at release to spin it. Real pitchers don't use their fingers that way, so I threw that number out.",
+      "pl.40": "Results of the main trials",
+      "pl.41": "<tr><th>Trial</th><th>Velocity</th><th>Spin rate</th><th>Spin axis</th><th>Release angle</th></tr>",
+      "pl.42": "<td>Fingers stay on the ball through release (no slap)</td><td>41.4 m/s<small> (≈149 km/h)</small></td><td>1,075 rpm</td><td>12:48</td><td>5.1° down</td>",
+      "pl.43": "<td>f4</td><td>39.0 m/s<small> (≈140 km/h)</small></td><td>1,929 rpm</td><td>1:06</td><td>6.3° down</td>",
+      "pl.44": "<td>Stage 1 pass criteria</td><td>135–150 km/h</td><td>2,100–2,500 rpm</td><td>—</td><td>Range of real pitchers</td>",
+      "pl.45": "km/h values are converted from m/s for reference.",
+      "pl.46": "<strong>Velocity is getting into range.</strong> Both trials fall within 135–150 km/h.",
+      "pl.47": "<strong>Spin rate is too low.</strong> With a proper release (no slapping), it's 1,075 rpm. f4 got up to 1,929 rpm, but that's still short of 2,100 rpm.",
+      "pl.48": "<strong>Joint loads are too high.</strong> Shoulder and elbow loads are about 1.6–2× the research values, over the 1.5× limit.",
+      "pl.49": "<strong>The thumb isn't touching the ball at release.</strong> In a real fastball the thumb helps support the ball, so I think this is one reason the spin is low.",
+      "pl.50": "<span>05</span>Videos",
+      "pl.51": "All clips are raw simulation output, exported as is (slow motion).",
+      "pl.52": "<b>f4 fastball (full body)</b> 39.0 m/s, 1,929 rpm, spin axis 1:06, 6.3° down.",
+      "pl.53": "<b>f4 release (close-up of the hand)</b> The moment the ball leaves, with the fingers on the seams.",
+      "pl.54": "<b>Fingers-on-the-ball fastball (full body)</b> A release without slapping. 41.4 m/s, 1,075 rpm, spin axis 12:48, 5.1° down.",
+      "pl.55": "<b>Fingers-on-the-ball fastball (release close-up)</b> The fingers stay in contact until the ball leaves.",
+      "pl.56": "<span>06</span>Next steps",
+      "pl.57": "<strong>Match skin-on-leather friction to measured values.</strong> Using Yamaguchi's (2020, 2022) measurements: 1.12 dry, 0.76 with rosin, 0.42 wet.",
+      "pl.58": "<strong>Add a CMC joint (the base joint) to the thumb.</strong> So the thumb can support the ball through release.",
+      "pl.59": "<strong>Once Stage 1 passes, move on to Stage 2 (breaking balls).</strong>",
+      "pl.60": "<span>07</span>Tech stack",
+      "pl.61": "<li>MuJoCo</li><li>Python</li><li>Motion capture (research data)</li><li>Contact and friction models</li><li>FFmpeg (video export)</li>",
+      "pl.62": "<span>08</span>Roadmap",
+      "pl.63": "<b>Done</b>Full-body model (shoulder blades, segmented spine, five fingers, wrist) and a ball with seams",
+      "pl.64": "<b>Done</b>Drive the whole body with motion capture and make it able to throw",
+      "pl.65": "<b>Now</b>Stage 1: get the fastball within the pass criteria (spin rate and joint loads not met yet)",
+      "pl.66": "<b>Next</b>Stage 2: reproduce existing breaking balls with spin within ±15%",
+      "pl.67": "<b>Later</b>Search new grips and releases to propose candidate pitches",
+      "pl.68": "<span>09</span>What I learned",
+      "pl.69": "<strong>Be most suspicious of good numbers.</strong> About 2,000 rpm looked close to passing, but the footage showed the fingers were just slapping the ball. Now I check the motion itself, not just the numbers.",
+      "pl.70": "<strong>Set the pass criteria first.</strong> Having the bar in place up front means I can say clearly that it isn't there yet.",
+      "pl.71": "<strong>Don't hide substituted values.</strong> Where there's no Japanese data I use MLB values and say so. If you can't tell which values are solid, you can't trust the results either.",
+      "pl.72": "<strong>Spin isn't decided by the fingertips alone.</strong> Small details like thumb support and skin-on-leather friction turn out to have a big effect on spin rate.",
+      "pl.showcaseCap": "PitchLab showcase video (about 30 seconds)",
+      "pl.tocLabel": "On this page",
+      "pl.meta.title": "PitchLab (in progress) | Fusuke Yasuda",
+      "pl.meta.description": "PitchLab: a full-body physics simulation for finding new pitches. Research motion capture runs in MuJoCo, with fingers, wrist, seams and friction modeled. Currently testing whether it can reproduce a fastball.",
+      "wip.title": "In progress",
+      "wip.lead": "Projects that aren't finished and are still being tested. Where results aren't there yet, I say so.",
+      "wip.status": "Testing · Stage 1 (fastball) not yet passed",
+      "wip.text": "A full-body physics simulation for finding new pitches. It drives research motion-capture data in MuJoCo, models the fingers, wrist, seams and friction, and is starting by checking whether it can reproduce a fastball.",
+      "wip.more": "Peek inside the project",
+      "wip.alt": "PitchLab full-body simulation (trial f4 fastball)"
+  };
+  Object.keys(EN_PAGES).forEach(function (k) { EN[k] = EN_PAGES[k]; });
+
   /* --- main.js が使う文章（日本語） ------------------------------------------ */
   var JA = {
     "meta.title": "Fusuke Yasuda | Portfolio",
@@ -344,8 +432,10 @@ var I18N = (function () {
     // タイトルと説明文
     var desc = document.querySelector('meta[name="description"]');
     if (!metaJa) metaJa = { title: document.title, desc: desc ? desc.getAttribute("content") : "" };
-    document.title = lang === "en" ? EN["meta.title"] : metaJa.title;
-    if (desc) desc.setAttribute("content", lang === "en" ? EN["meta.description"] : metaJa.desc);
+    var page = root.getAttribute("data-i18n-page");
+    var mp = page ? page + ".meta." : "meta.";
+    document.title = lang === "en" ? EN[mp + "title"] : metaJa.title;
+    if (desc) desc.setAttribute("content", lang === "en" ? EN[mp + "description"] : metaJa.desc);
     var ogLocale = document.querySelector('meta[property="og:locale"]');
     if (ogLocale) ogLocale.setAttribute("content", lang === "en" ? "en_US" : "ja_JP");
 

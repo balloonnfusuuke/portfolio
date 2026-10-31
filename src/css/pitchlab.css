@@ -1,0 +1,61 @@
+/* PitchLab 詳細ページ — style.css の変数をそのまま使う */
+.pl { background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+.pl-top { position: sticky; top: 0; z-index: 10; background: rgba(248,246,240,.92); backdrop-filter: blur(8px); border-bottom: var(--hairline) solid var(--line); }
+.pl-top__inner { display: flex; justify-content: space-between; align-items: center; min-height: 60px; }
+.pl-top__mark { font-family: var(--font-head); font-weight: 700; color: var(--ink); }
+.pl-back { color: var(--ink); text-decoration: none; font-size: var(--fs-sm); font-weight: 500; border-bottom: 1px solid var(--gold-line); }
+.pl-back:hover { color: var(--gold-ink); }
+.pl-back--big { font-size: var(--fs-base); }
+.pl-hero { padding: var(--sp-11) 0 var(--sp-8); }
+.pl-hero__title { font-family: var(--font-head); font-size: var(--fs-display); line-height: var(--lh-tight); margin: var(--sp-3) 0 var(--sp-5); }
+.pl-hero__lead { font-size: var(--fs-lead); line-height: var(--lh-body); color: var(--ink-soft); max-width: var(--measure); }
+.pl-facts { list-style: none; padding: 0; margin: var(--sp-7) 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-3); }
+.pl-facts li { background: var(--card); border: var(--hairline) solid var(--line); border-radius: var(--radius-sm, 8px); padding: var(--sp-4); font-size: var(--fs-sm); }
+.pl-facts span { display: block; font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--gold-ink); margin-bottom: var(--sp-1); }
+.pl-media { margin: 0; background: var(--card); border: var(--hairline) solid var(--line); border-radius: var(--radius-md, 12px); overflow: hidden; box-shadow: var(--shadow-sm); }
+.pl-media video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--ink-deep); object-fit: contain; }
+.pl-media figcaption { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-sm); line-height: var(--lh-snug); color: var(--ink-soft); }
+.pl-media figcaption b { color: var(--ink); display: block; }
+.pl-toc { display: flex; flex-wrap: wrap; gap: var(--sp-2); padding-bottom: var(--sp-6); }
+.pl-toc a { font-size: var(--fs-sm); color: var(--ink); text-decoration: none; padding: 6px 14px; border: var(--hairline) solid var(--line-dark); border-radius: 999px; background: var(--card); }
+.pl-toc a:hover { border-color: var(--gold); color: var(--gold-ink); }
+.pl-sec { padding: var(--sp-9) 0; border-top: var(--hairline) solid var(--line); scroll-margin-top: 70px; }
+.pl-sec > p { max-width: var(--measure); line-height: var(--lh-body); color: var(--ink-soft); margin: 0 0 var(--sp-4); }
+.pl-h2 { font-family: var(--font-head); font-size: var(--fs-h2); line-height: var(--lh-heading); margin: 0 0 var(--sp-6); }
+.pl-h2 span { display: block; font-family: var(--font-body); font-size: var(--fs-xs); letter-spacing: var(--ls-widest); color: var(--gold-ink); margin-bottom: var(--sp-2); }
+.pl-h3 { font-size: var(--fs-h3); margin: var(--sp-7) 0 var(--sp-3); }
+.pl-note { border-left: 3px solid var(--gold); padding-left: var(--sp-4); color: var(--ink) !important; }
+.pl-small { font-size: var(--fs-xs) !important; color: var(--ink-mute) !important; }
+.pl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-5); }
+.pl-card, .pl-stage { background: var(--card); border: var(--hairline) solid var(--line); border-radius: var(--radius-md, 12px); padding: var(--sp-6); box-shadow: var(--shadow-sm); }
+.pl-card h3, .pl-stage h3 { font-size: 1.1rem; margin: 0 0 var(--sp-3); }
+.pl-card p { margin: 0; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--ink-soft); }
+.pl-card--wide { grid-column: 1 / -1; }
+.pl-stages { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--sp-5); margin-top: var(--sp-6); }
+.pl-stage.is-current { border-color: var(--gold-line); background: linear-gradient(var(--gold-wash), var(--gold-wash)), var(--card); }
+.pl-stage__tag { font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--gold-ink); margin: 0 0 var(--sp-2); }
+.pl-stage ul { margin: 0; padding-left: 1.2em; font-size: var(--fs-sm); line-height: var(--lh-body); color: var(--ink-soft); }
+.pl-table-wrap { overflow-x: auto; border: var(--hairline) solid var(--line); border-radius: var(--radius-md, 12px); background: var(--card); }
+.pl-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); min-width: 620px; }
+.pl-table th, .pl-table td { padding: var(--sp-3) var(--sp-4); text-align: left; border-bottom: var(--hairline) solid var(--line); vertical-align: top; }
+.pl-table th { font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--ink-mute); font-weight: 500; }
+.pl-table small { display: block; color: var(--ink-mute); }
+.pl-table__goal td { background: var(--gold-wash); color: var(--gold-ink); font-weight: 500; border-bottom: 0; }
+.pl-findings, .pl-steps { max-width: 46em; padding-left: 1.2em; line-height: var(--lh-body); color: var(--ink-soft); margin-top: var(--sp-6); }
+.pl-findings li, .pl-steps li { margin-bottom: var(--sp-3); }
+.pl-findings strong, .pl-steps strong { color: var(--ink); }
+.pl-videos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-6); margin-top: var(--sp-6); }
+.pl-tags { margin-top: 0; }
+.pl-road { list-style: none; padding: 0; margin: 0; max-width: 46em; }
+.pl-road li { position: relative; padding: var(--sp-3) 0 var(--sp-3) 3.2em; border-left: 2px solid var(--line); margin-left: 1em; color: var(--ink-soft); line-height: var(--lh-snug); }
+.pl-road b { position: absolute; left: -1em; top: var(--sp-3); width: 2em; height: 2em; border-radius: 50%; display: grid; place-items: center; font-size: var(--fs-xs); background: var(--card); border: 1px solid var(--line-dark); color: var(--ink-mute); }
+.pl-road .is-done b { background: var(--ink); color: #fff; border-color: var(--ink); }
+.pl-road .is-now { color: var(--ink); font-weight: 500; }
+.pl-road .is-now b { background: var(--gold); color: var(--ink-deep); border-color: var(--gold); }
+.pl-end { padding: var(--sp-8) 0 var(--sp-11); }
+@media (max-width: 720px) {
+  .pl-hero { padding-top: var(--sp-8); }
+  .pl-videos { grid-template-columns: 1fr; }
+  .pl-sec { padding: var(--sp-8) 0; }
+}
+.pl-top__right { display: flex; align-items: center; gap: var(--sp-4, 16px); }
