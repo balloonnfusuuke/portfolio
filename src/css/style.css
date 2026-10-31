@@ -2170,32 +2170,89 @@ button, input, textarea { font: inherit; color: inherit; }
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 12px;
-  padding: 28px 22px 18px;
+  place-items: center;
+  perspective: 1100px;
+  padding: 20px 24px 44px;
+}
+
+.project-card__spin {
+  position: relative;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 1024 / 645;
+  transform-style: preserve-3d;
+  animation: card-spin 8s linear infinite;
 }
 
 .project-card__face {
+  position: absolute;
+  inset: 0;
   margin: 0;
-  min-width: 0;
+  transform: translateZ(1px);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
+
+.project-card__face.is-rear { transform: rotateY(180deg) translateZ(1px); }
 
 .project-card__face img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 3px;
+  border-radius: 4px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
 }
 
 .project-card__face figcaption {
-  margin-top: 8px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 10px);
   text-align: center;
   font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(248, 246, 240, 0.72);
+}
+
+@keyframes card-spin {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+
+@media (min-width: 900px) {
+  .project-card--lead .project-card__spin { max-width: 480px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card__pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 12px;
+    perspective: none;
+    padding: 28px 22px 18px;
+  }
+
+  .project-card__spin {
+    display: contents;
+    animation: none;
+  }
+
+  .project-card__face,
+  .project-card__face.is-rear {
+    position: relative;
+    inset: auto;
+    transform: none;
+    backface-visibility: visible;
+  }
+
+  .project-card__face figcaption {
+    position: static;
+    margin-top: 8px;
+  }
 }
 
 .project-card:hover .project-card__img { transform: scale(1.03); }

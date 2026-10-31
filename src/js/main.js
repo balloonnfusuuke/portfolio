@@ -181,12 +181,15 @@ const OPENING = {
 
     var pair = project.images && project.images.length > 1;
     var thumb = pair
-      ? '<div class="project-card__pair">' + project.images.map(function (shot) {
-          return '<figure class="project-card__face">' +
-            '<img src="' + escapeHtml(shot.src) + '" alt="' + escapeHtml(I18N.t(shot.labelKey)) + '" width="1024" height="645" loading="lazy" decoding="async">' +
-            '<figcaption>' + escapeHtml(I18N.t(shot.labelKey)) + '</figcaption>' +
-          '</figure>';
-        }).join("") + '</div>'
+      ? '<div class="project-card__pair">' +
+          '<div class="project-card__spin">' +
+          project.images.map(function (shot, faceIndex) {
+            return '<figure class="project-card__face' + (faceIndex === 0 ? "" : " is-rear") + '">' +
+              '<img src="' + escapeHtml(shot.src) + '" alt="' + escapeHtml(I18N.t(shot.labelKey)) + '" width="1024" height="645" loading="lazy" decoding="async">' +
+              '<figcaption>' + escapeHtml(I18N.t(shot.labelKey)) + '</figcaption>' +
+            '</figure>';
+          }).join("") +
+          '</div></div>'
       : project.image
       ? '<img class="project-card__img" src="' + escapeHtml(project.image) + '" alt="' +
           escapeHtml(I18N.t(project.live ? "card.shot" : "card.image", { title: project.title })) +
