@@ -2163,22 +2163,32 @@ button, input, textarea { font: inherit; color: inherit; }
   transition: transform var(--dur-3) var(--ease);
 }
 
-.project-card__thumb.has-pair { background: #1B2A4A; }
-.project-card__thumb.has-pair::after { display: none; }
+.project-card__thumb.has-pair {
+  background:
+    linear-gradient(to right, rgba(27, 42, 74, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(27, 42, 74, 0.045) 1px, transparent 1px),
+    var(--card);
+  background-size: 28px 28px, 28px 28px, cover;
+}
+.project-card__thumb.has-pair::after {
+  display: block;
+  border-color: var(--gold-line);
+}
 
 .project-card__pair {
   position: absolute;
-  inset: 0;
+  inset: 22px 24px 16px;
   display: grid;
-  place-items: center;
-  perspective: 1100px;
-  padding: 20px 24px 44px;
+  justify-items: center;
+  align-items: start;
+  perspective: 2400px;
+  padding: 4px 8px 0;
 }
 
 .project-card__spin {
   position: relative;
-  height: 100%;
   width: auto;
+  height: calc(100% - 30px);
   max-width: 100%;
   aspect-ratio: 1024 / 645;
   transform-style: preserve-3d;
@@ -2201,7 +2211,7 @@ button, input, textarea { font: inherit; color: inherit; }
   width: 100%;
   height: auto;
   border-radius: 4px;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 8px 18px rgba(27, 42, 74, 0.14);
 }
 
 .project-card__face figcaption {
@@ -2214,7 +2224,7 @@ button, input, textarea { font: inherit; color: inherit; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(248, 246, 240, 0.72);
+  color: var(--ink-mute);
 }
 
 @keyframes card-spin {
@@ -2223,7 +2233,10 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 @media (min-width: 900px) {
-  .project-card--lead .project-card__spin { max-width: 480px; }
+  .project-card--lead .project-card__spin {
+    height: calc(100% - 32px);
+    max-width: 420px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
