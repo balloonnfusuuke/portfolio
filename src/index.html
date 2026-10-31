@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fusuke Yasuda | Portfolio</title>
+  <meta name="description" content="安田 風介（Fusuke Yasuda）のポートフォリオ。現場の「困った」を、動くプロダクトに。コンピュータサイエンスを学びながら、Webツールや分析ツールを個人で企画・開発・公開しています。目指すのは、世界のどこでも野球を職業にできる未来です。">
+  <meta name="author" content="Fusuke Yasuda">
+  <meta name="theme-color" content="#F8F6F0">
+
+  <!-- OGP（公開URL: https://fusuke-yasuda.vercel.app/） -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fusuke Yasuda | Portfolio">
+  <meta property="og:title" content="Fusuke Yasuda | Portfolio">
+  <meta property="og:description" content="現場の「困った」を、動くプロダクトに。CS Student / Builder / AI Developer — 安田 風介のポートフォリオ。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://fusuke-yasuda.vercel.app/">
+  <meta property="og:image" content="https://fusuke-yasuda.vercel.app/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fusuke Yasuda | Portfolio">
+  <meta name="twitter:image" content="https://fusuke-yasuda.vercel.app/assets/og-image.png">
+  <meta name="twitter:description" content="現場の「困った」を、動くプロダクトに。安田 風介のポートフォリオ。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fff' stroke='%231B2A4A' stroke-width='6'/%3E%3Cpath d='M16 32C36 44 64 44 84 32M16 68C36 56 64 56 84 68' fill='none' stroke='%23C9A227' stroke-width='6' stroke-dasharray='5 3'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 表示言語を描画前に決める：保存済みの選択 → ブラウザの第一言語（ja* なら日本語、それ以外は英語） -->
+  <script>
+    (function () {
+      var lang = "ja";
+      try {
+        var saved = window.localStorage.getItem("fy-lang");
+        if (saved === "ja" || saved === "en") { lang = saved; }
+        else {
+          var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "ja"];
+          lang = /^ja\b/i.test(String(list[0] || "")) ? "ja" : "en";
+        }
+      } catch (e) { /* noop */ }
+      window.__lang = lang;
+      document.documentElement.lang = lang;
+    })();
+  </script>
+
+  <!-- オープニングを出すかどうかを描画前に決める（初回訪問・動きOK・ページ先頭から開いたときだけ） -->
+  <script>
+    (function () {
+      try {
+        var root = document.documentElement;
+        var seen = window.localStorage.getItem("fy-opening-seen") === "1";
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var deepLink = location.hash && location.hash !== "#hero";
+        if (!seen && !reduce && !deepLink) {
+          root.classList.add("is-opening");
+          // main.js が読めなかったときの保険：25秒で必ず解除
+          window.__openingFailsafe = window.setTimeout(function () {
+            root.classList.remove("is-opening");
+          }, 25000);
+        }
+      } catch (e) { /* localStorage が使えない環境ではオープニングなし */ }
+    })();
+  </script>
+
+  <!-- JavaScriptが無効でも内容が消えないように -->
+  <noscript>
+    <style>
+      [data-reveal], .timeline__item, .project-card {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
+</head>
+<body>
+
+  <!-- 野球ボールのSVG（オープニングとヒーローの「.」で共通利用）
+       縫い目は実際の野球ボールの3D曲線（2枚の革の境界）を正面から投影したもの。108本のステッチ付き。
+       生成スクリプト：tools/ball/gen.py（サイト外） -->
+  <svg class="svg-sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ballSymbol" viewBox="0 0 100 100">
+        <defs>
+          <radialGradient id="ballShade" cx="40%" cy="34%" r="70%">
+            <stop offset="0" stop-color="#FFFFFF"/>
+            <stop offset="0.55" stop-color="#FBFAF7"/>
+            <stop offset="0.85" stop-color="#ECE8DF"/>
+            <stop offset="1" stop-color="#DCD6CA"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="49" fill="url(#ballShade)"/>
+        <path d="M84.65 15.44 L84.65 15.48 L84.65 15.53 L84.64 15.59 L84.63 15.64 L84.61 15.71 L84.59 15.77 L84.57 15.85 L84.54 15.92 L84.5 16 L84.46 16.08 L84.41 16.17 L84.36 16.26 L84.31 16.35 L84.25 16.45 L84.18 16.55 L84.11 16.66 L84.03 16.77 L83.95 16.88 L83.86 16.99 L83.77 17.11 L83.67 17.23 L83.56 17.35 L83.45 17.48 L83.34 17.61 L83.22 17.74 L83.09 17.88 L82.96 18.01 L82.82 18.15 L82.67 18.3 L82.52 18.44 L82.37 18.59 L82.2 18.74 L82.04 18.89 L81.86 19.04 L81.68 19.2 L81.49 19.36 L81.3 19.51 L81.1 19.68 L80.9 19.84 L80.68 20 L80.47 20.17 L80.24 20.33 L80.01 20.5 L79.77 20.67 L79.53 20.84 L79.28 21.01 L79.03 21.18 L78.76 21.35 L78.49 21.53 L78.22 21.7 L77.94 21.87 L77.65 22.05 L77.35 22.22 L77.05 22.4 L76.75 22.57 L76.43 22.74 L76.11 22.92 L75.78 23.09 L75.45 23.26 L75.11 23.44 L74.77 23.61 L74.41 23.78 L74.06 23.95 L73.69 24.12 L73.32 24.29 L72.94 24.46 L72.56 24.62 L72.17 24.79 L71.77 24.95 L71.37 25.11 L70.96 25.27 L70.55 25.43 L70.13 25.58 L69.7 25.74 L69.27 25.89 L68.83 26.04 L68.39 26.18 L67.94 26.33 L67.49 26.47 L67.03 26.61 L66.57 26.74 L66.1 26.88 L65.62 27.01 L65.14 27.13 L64.66 27.26 L64.17 27.38 L63.67 27.49 L63.18 27.6 L62.67 27.71 L62.17 27.82 L61.66 27.92 L61.14 28.02 L60.62 28.11 L60.1 28.2 L59.57 28.28 L59.05 28.37 L58.51 28.44 L57.98 28.51 L57.44 28.58 L56.9 28.64 L56.36 28.7 L55.81 28.76 L55.26 28.81 L54.72 28.85 L54.16 28.89 L53.61 28.92 L53.06 28.95 L52.5 28.98 L51.95 29 L51.39 29.01 L50.84 29.02 L50.28 29.03 L49.72 29.03 L49.16 29.02 L48.61 29.01 L48.05 29 L47.5 28.98 L46.94 28.95 L46.39 28.92 L45.84 28.89 L45.28 28.85 L44.74 28.81 L44.19 28.76 L43.64 28.7 L43.1 28.64 L42.56 28.58 L42.02 28.51 L41.49 28.44 L40.95 28.37 L40.43 28.28 L39.9 28.2 L39.38 28.11 L38.86 28.02 L38.34 27.92 L37.83 27.82 L37.33 27.71 L36.82 27.6 L36.33 27.49 L35.83 27.38 L35.34 27.26 L34.86 27.13 L34.38 27.01 L33.9 26.88 L33.43 26.74 L32.97 26.61 L32.51 26.47 L32.06 26.33 L31.61 26.18 L31.17 26.04 L30.73 25.89 L30.3 25.74 L29.87 25.58 L29.45 25.43 L29.04 25.27 L28.63 25.11 L28.23 24.95 L27.83 24.79 L27.44 24.62 L27.06 24.46 L26.68 24.29 L26.31 24.12 L25.94 23.95 L25.59 23.78 L25.23 23.61 L24.89 23.44 L24.55 23.26 L24.22 23.09 L23.89 22.92 L23.57 22.74 L23.25 22.57 L22.95 22.4 L22.65 22.22 L22.35 22.05 L22.06 21.87 L21.78 21.7 L21.51 21.53 L21.24 21.35 L20.97 21.18 L20.72 21.01 L20.47 20.84 L20.23 20.67 L19.99 20.5 L19.76 20.33 L19.53 20.17 L19.32 20 L19.1 19.84 L18.9 19.68 L18.7 19.51 L18.51 19.36 L18.32 19.2 L18.14 19.04 L17.96 18.89 L17.8 18.74 L17.63 18.59 L17.48 18.44 L17.33 18.3 L17.18 18.15 L17.04 18.01 L16.91 17.88 L16.78 17.74 L16.66 17.61 L16.55 17.48 L16.44 17.35 L16.33 17.23 L16.23 17.11 L16.14 16.99 L16.05 16.88 L15.97 16.77 L15.89 16.66 L15.82 16.55 L15.75 16.45 L15.69 16.35 L15.64 16.26 L15.59 16.17 L15.54 16.08 L15.5 16 L15.46 15.92 L15.43 15.85 L15.41 15.77 L15.39 15.71 L15.37 15.64 L15.36 15.59 L15.35 15.53 L15.35 15.48 L15.35 15.44 L15.36 15.4 L15.37 15.36 L15.39 15.33 L15.41 15.3 M15.39 84.68 L15.41 84.69 L15.43 84.7 L15.46 84.7 L15.5 84.7 L15.54 84.69 L15.59 84.68 L15.64 84.67 L15.69 84.65 L15.75 84.63 L15.82 84.61 L15.89 84.58 L15.97 84.55 L16.05 84.51 L16.14 84.47 L16.23 84.43 L16.33 84.39 L16.44 84.34 L16.55 84.29 L16.66 84.23 L16.78 84.18 L16.91 84.11 L17.04 84.05 L17.18 83.99 L17.33 83.92 L17.48 83.84 L17.63 83.77 L17.8 83.69 L17.96 83.61 L18.14 83.53 L18.32 83.45 L18.51 83.36 L18.7 83.28 L18.9 83.19 L19.1 83.09 L19.32 83 L19.53 82.9 L19.76 82.81 L19.99 82.71 L20.23 82.61 L20.47 82.5 L20.72 82.4 L20.97 82.29 L21.24 82.19 L21.51 82.08 L21.78 81.97 L22.06 81.86 L22.35 81.75 L22.65 81.64 L22.95 81.53 L23.25 81.41 L23.57 81.3 L23.89 81.19 L24.22 81.07 L24.55 80.96 L24.89 80.85 L25.23 80.73 L25.59 80.62 L25.94 80.5 L26.31 80.39 L26.68 80.27 L27.06 80.16 L27.44 80.05 L27.83 79.94 L28.23 79.82 L28.63 79.71 L29.04 79.6 L29.45 79.49 L29.87 79.39 L30.3 79.28 L30.73 79.17 L31.17 79.07 L31.61 78.97 L32.06 78.87 L32.51 78.77 L32.97 78.67 L33.43 78.57 L33.9 78.48 L34.38 78.39 L34.86 78.3 L35.34 78.21 L35.83 78.12 L36.33 78.04 L36.82 77.96 L37.33 77.88 L37.83 77.81 L38.34 77.73 L38.86 77.66 L39.38 77.6 L39.9 77.53 L40.43 77.47 L40.95 77.41 L41.49 77.36 L42.02 77.3 L42.56 77.26 L43.1 77.21 L43.64 77.17 L44.19 77.13 L44.74 77.09 L45.28 77.06 L45.84 77.03 L46.39 77.01 L46.94 76.99 L47.5 76.97 L48.05 76.95 L48.61 76.94 L49.16 76.94 L49.72 76.93 L50.28 76.93 L50.84 76.94 L51.39 76.94 L51.95 76.95 L52.5 76.97 L53.06 76.99 L53.61 77.01 L54.16 77.03 L54.72 77.06 L55.26 77.09 L55.81 77.13 L56.36 77.17 L56.9 77.21 L57.44 77.26 L57.98 77.3 L58.51 77.36 L59.05 77.41 L59.57 77.47 L60.1 77.53 L60.62 77.6 L61.14 77.66 L61.66 77.73 L62.17 77.81 L62.67 77.88 L63.18 77.96 L63.67 78.04 L64.17 78.12 L64.66 78.21 L65.14 78.3 L65.62 78.39 L66.1 78.48 L66.57 78.57 L67.03 78.67 L67.49 78.77 L67.94 78.87 L68.39 78.97 L68.83 79.07 L69.27 79.17 L69.7 79.28 L70.13 79.39 L70.55 79.49 L70.96 79.6 L71.37 79.71 L71.77 79.82 L72.17 79.94 L72.56 80.05 L72.94 80.16 L73.32 80.27 L73.69 80.39 L74.06 80.5 L74.41 80.62 L74.77 80.73 L75.11 80.85 L75.45 80.96 L75.78 81.07 L76.11 81.19 L76.43 81.3 L76.75 81.41 L77.05 81.53 L77.35 81.64 L77.65 81.75 L77.94 81.86 L78.22 81.97 L78.49 82.08 L78.76 82.19 L79.03 82.29 L79.28 82.4 L79.53 82.5 L79.77 82.61 L80.01 82.71 L80.24 82.81 L80.47 82.9 L80.68 83 L80.9 83.09 L81.1 83.19 L81.3 83.28 L81.49 83.36 L81.68 83.45 L81.86 83.53 L82.04 83.61 L82.2 83.69 L82.37 83.77 L82.52 83.84 L82.67 83.92 L82.82 83.99 L82.96 84.05 L83.09 84.11 L83.22 84.18 L83.34 84.23 L83.45 84.29 L83.56 84.34 L83.67 84.39 L83.77 84.43 L83.86 84.47 L83.95 84.51 L84.03 84.55 L84.11 84.58 L84.18 84.61 L84.25 84.63 L84.31 84.65 L84.36 84.67 L84.41 84.68 L84.46 84.69 L84.5 84.7 L84.54 84.7 L84.57 84.7 L84.59 84.69 L84.61 84.68 M84.59 15.3 L84.61 15.33 L84.63 15.36 L84.64 15.4 L84.65 15.44" fill="none" stroke="#CFC8BA" stroke-width="1.1" stroke-linecap="round"/>
+        <g fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M87.38 20.29L83.56 17.36L80.53 13.38 M85.28 22.57L80.96 19.79L78.63 15.47 M81.36 25.49L76.63 22.64L75.23 18.04 M75.42 28.61L70.53 25.44L70.32 20.67 M67.46 31.37L62.82 27.69L64.01 22.94 M57.85 33.17L53.96 28.91L56.62 24.42 M47.44 33.57L44.71 28.81L48.66 24.81 M37.33 32.45L35.97 27.41L40.78 24.02 M28.52 30.13L28.48 25.05L33.63 22.2 M21.57 27.16L22.63 22.22L27.7 19.72 M16.63 24.11L18.56 19.4L23.28 17.01 M13.59 21.46L16.2 17.07L20.44 14.55 M12.22 19.6L15.36 15.58L19.11 12.74 M12.62 80.95L16.44 84.34L19.47 87.84 M14.72 79.96L19.04 83.12L21.37 86.94 M18.64 78.25L23.37 81.37L24.77 85.44 M24.58 76.2L29.47 79.49L29.68 83.71 M32.54 74.27L37.18 77.9L35.99 82.14 M42.15 72.97L46.04 77.02L43.38 81.08 M52.56 72.69L55.29 77.09L51.34 80.79 M62.67 73.5L64.03 78.09L59.22 81.36 M71.48 75.14L71.52 79.75L66.37 82.66 M78.43 77.17L77.37 81.64L72.3 84.36 M83.37 79.09L81.44 83.34L76.72 86.07 M86.41 80.51L83.8 84.45L79.56 87.4" stroke="#C9A227"/>
+          <path d="M87.82 19.51L84.27 16.42L80.94 12.63 M86.54 21.33L82.47 18.5L79.76 14.34 M83.56 23.97L79.02 21.19L77.12 16.72 M78.65 27.06L73.8 24.07L72.96 19.38 M71.68 30.07L66.86 26.66L67.32 21.88 M62.82 32.42L58.49 28.45L60.43 23.8 M52.68 33.56L49.33 29.03L52.68 24.76 M42.28 33.19L40.23 28.26L44.67 24.56 M32.72 31.41L32.04 26.33L37.07 23.22 M24.8 28.69L25.33 23.66L30.49 21.01 M18.85 25.62L20.38 20.78L25.3 18.36 M14.89 22.71L17.17 18.15L21.67 15.72 M12.72 20.41L15.6 16.2L19.59 13.54 M13.46 80.57L17.53 83.82L20.24 87.49 M16.44 79.17L20.98 82.29L22.88 86.24 M21.35 77.24L26.2 80.42L27.04 84.58 M28.32 75.19L33.14 78.63L32.68 82.88 M37.18 73.52L41.51 77.35L39.57 81.52 M47.32 72.69L50.67 76.93L47.32 80.82 M57.72 72.97L59.77 77.49L55.33 80.97 M67.28 74.24L67.96 78.87L62.93 81.94 M75.2 76.14L74.67 80.69L69.51 83.48 M81.15 78.17L79.62 82.54L74.7 85.24 M85.11 79.89L82.83 83.99L78.33 86.81 M87.28 80.92L84.4 84.68L80.41 87.79" stroke="#1B2A4A"/>
+        </g>
+        <circle class="ball-edge" cx="50" cy="50" r="48.5" fill="none" stroke="#1B2A4A"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ==================== Opening ==================== -->
+  <div class="opening" id="opening" role="region" aria-label="オープニング映像" data-i18n-attr="aria-label=opening.region">
+    <div class="opening__frame" id="openingFrame">
+      <video class="opening__video" id="openingVideo" muted playsinline preload="auto"
+             aria-hidden="true" tabindex="-1"></video>
+      <div class="opening__cities" id="openingCities" aria-hidden="true"></div>
+    </div>
+    <button class="opening__skip" id="openingSkip" type="button" aria-label="オープニングをスキップ" data-i18n-attr="aria-label=opening.skip">
+      Skip<span class="opening__skip-arrow" aria-hidden="true">→</span>
+    </button>
+  </div>
+  <!-- 映像の最後のボールと入れ替わり、名前の「.」まで飛ぶボール -->
+  <div class="opening-ball" id="openingBall" aria-hidden="true">
+    <svg viewBox="0 0 100 100" focusable="false"><use href="#ballSymbol"></use></svg>
+  </div>
+
+  <!-- スクロール進捗バー -->
+  <div class="progress" aria-hidden="true">
+    <span class="progress__bar" id="progressBar"></span>
+  </div>
+
+  <!-- 固定ナビ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="nav__brand" href="#hero">
+        <span class="nav__mark">FY</span>
+        <span class="nav__brand-name">Fusuke Yasuda</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="メインナビゲーション" data-i18n-attr="aria-label=nav.main">
+        <a class="nav__link" href="#about">About</a>
+        <a class="nav__link" href="#vision">Vision</a>
+        <a class="nav__link" href="#skills">Skills</a>
+        <a class="nav__link" href="#projects">Projects</a>
+        <a class="nav__link" href="#experience">Experience</a>
+        <a class="nav__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="表示言語 / Language">
+        <button class="lang-switch__btn" type="button" data-lang="ja" lang="ja" aria-label="日本語で表示">JA</button>
+        <span class="lang-switch__sep" aria-hidden="true">/</span>
+        <button class="lang-switch__btn" type="button" data-lang="en" lang="en" aria-label="View in English">EN</button>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" type="button"
+              aria-label="メニューを開く" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== Hero ==================== -->
+    <section class="hero" id="hero">
+      <div class="hero__deco" aria-hidden="true">
+        <span class="hero__ring hero__ring--1"></span>
+        <span class="hero__ring hero__ring--2"></span>
+        <span class="hero__ring hero__ring--3"></span>
+      </div>
+      <div class="container hero__layout">
+      <div class="hero__inner">
+        <p class="hero__kicker">
+          <span class="rule" aria-hidden="true"></span>Portfolio
+        </p>
+
+        <h1 class="hero__name" id="heroName">
+          Fusuke <span class="hero__name-last">Yasuda<span class="hero__dot" id="heroDot"><span
+            class="hero__dot-spin"><span class="hero__dot-boost"><svg viewBox="0 0 100 100" focusable="false"
+            aria-hidden="true"><use href="#ballSymbol"></use></svg></span></span><span
+            class="visually-hidden">.</span></span></span>
+          <span class="hero__name-en hero__name-ja" lang="ja">安田 風介</span>
+        </h1>
+
+        <p class="hero__role">
+          <span class="hero__role-label" data-i18n="hero.iam">いまは</span>
+          <span class="hero__role-text" id="roleText" aria-live="off">CS Student</span>
+        </p>
+
+        <p class="hero__lead" id="heroLead"></p>
+
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#projects" data-i18n="hero.projects">作品を見る</a>
+          <a class="btn btn--outline" href="#contact" data-i18n="hero.contact">連絡する</a>
+        </div>
+
+        <ul class="hero__meta">
+          <li><span class="hero__meta-key" data-i18n="hero.from">出身</span> <span data-i18n="hero.fromVal">大阪</span></li>
+          <li><span class="hero__meta-key" data-i18n="hero.study">在学</span> <span data-i18n="hero.studyVal">CS · Multimedia University</span></li>
+          <li><span class="hero__meta-key" data-i18n="hero.focus">領域</span> <span data-i18n="hero.focusVal">Web / AI / スポーツ</span></li>
+        </ul>
+      </div>
+
+      <figure class="hero__cast">
+        <div class="hero__cast-stage">
+          <video class="hero__cast-video" id="castVideo" muted playsinline preload="auto"
+                 poster="assets/character/face-light.png"
+                 src="assets/character/homerun.webm"></video>
+        </div>
+        <div class="hero__cast-faces">
+          <img src="assets/character/face-light.png" width="512" height="512" alt="白い野球ボールのキャラクター" data-i18n-attr="alt=cast.faceLight">
+          <img src="assets/character/face-navy.png" width="512" height="512" alt="紺と金の、同じキャラクター" data-i18n-attr="alt=cast.faceNavy">
+        </div>
+        <div class="hero__cast-picks" role="group" aria-label="キャラクターの動き" data-i18n-attr="aria-label=cast.moves">
+          <button class="filter is-active" type="button" data-clip="assets/character/homerun.webm" data-i18n="cast.homerun">ホームラン</button>
+          <button class="filter" type="button" data-clip="assets/character/gosokukyu.webm" data-i18n="cast.fastball">剛速球</button>
+          <button class="filter" type="button" data-clip="assets/character/yurukawa.webm" data-i18n="cast.curve">ゆる変化</button>
+        </div>
+        <figcaption class="hero__cast-note" data-i18n="cast.note">自分で描いて、Blenderで動かしたキャラクターです。</figcaption>
+      </figure>
+      </div>
+
+      <a class="hero__scroll" href="#about" aria-label="下へスクロール" data-i18n-attr="aria-label=hero.scroll">
+        <span class="hero__scroll-line" aria-hidden="true"></span><span data-i18n="hero.scrollText">スクロール</span>
+      </a>
+    </section>
+
+    <!-- ==================== About ==================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">About</p>
+          <h2 class="section__title" data-i18n="about.title">私について</h2>
+          <p class="section__lead" data-i18n="about.lead">
+            現場で見つけた小さな「困った」を、実際に使えるツールにすることを大切にしています。
+          </p>
+        </header>
+
+        <div class="about">
+          <div class="about__body">
+            <div class="about__profile" data-reveal>
+              <picture class="about__avatar">
+                <source srcset="assets/profile-avatar.webp" type="image/webp">
+                <img class="about__avatar-img" src="assets/profile-avatar.jpg" alt="安田 風介（Fusuke Yasuda）のプロフィール写真" data-i18n-attr="alt=about.avatarAlt"
+                     width="320" height="320" loading="lazy" decoding="async">
+              </picture>
+              <div class="about__id">
+                <p class="about__id-name" data-i18n="about.idName">安田 風介</p>
+                <p class="about__id-en" lang="en" data-i18n="about.idSub" data-i18n-lang="about.idSubLang">Fusuke Yasuda</p>
+                <p class="about__id-meta" data-i18n="about.idMeta">大阪出身 · CS Student / Builder</p>
+              </div>
+            </div>
+
+            <h3 class="about__heading" data-reveal data-i18n="about.heading">
+              課題を見つけて、<br>動くものをつくる。
+            </h3>
+
+            <p data-reveal data-i18n="about.p1">
+              大阪出身。ニュージーランドの高校を卒業し、2026年10月からはマレーシアの
+              Multimedia University でコンピュータサイエンスを学びます。
+            </p>
+            <p data-reveal data-i18n="about.p2">
+              独立リーグ球団「和歌山ウェイブス」で球団初のインターンとして広報を担当し、現場の課題に直接ふれたことをきっかけに、
+              選手評価や投球解析などのWebツールを個人で企画・開発・公開するようになりました。株式の自動監視システムなど、野球以外の分野でも手を動かしています。
+            </p>
+            <p data-reveal data-i18n="about.p3">
+              AIを活用した開発と、新しい技術に飛び込むことが好きです。日本語と英語の両方で仕事ができます。
+            </p>
+
+            <ul class="stats" id="statsList" data-reveal></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== Vision ==================== -->
+    <section class="section section--tint" id="vision">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Vision</p>
+          <h2 class="section__title" data-i18n="vision.title">目指す世界</h2>
+          <p class="section__lead" data-i18n="vision.lead">
+            ものをつくる理由の、いちばん奥にあるもの。
+          </p>
+        </header>
+
+        <div class="vision">
+          <blockquote class="vision__statement" data-reveal>
+            <p class="vision__quote" data-i18n="vision.quote"><span>野球を、世界のどこでも</span><span>「仕事にできる」スポーツに。</span></p>
+            <p class="vision__quote-en" lang="en" data-i18n="vision.quoteSub">A world where anyone who loves baseball can make it their career.</p>
+          </blockquote>
+
+          <div class="vision__body">
+            <p data-reveal data-i18n="vision.p1">
+              アメリカ、日本、韓国、台湾では、野球選手が大勢の観客の前でプレーし、何億ドルもの報酬を得ることができます。
+              けれど、それ以外のアジアやヨーロッパの多くの国では、野球はあってもクリケットなどに市場を取られていたり、プレーする人がまだ少なかったりします。
+            </p>
+            <p data-reveal data-i18n="vision.p2">
+              この差を埋めて、ほとんどの国で野球が盛んに行われ、野球を好きなすべての人が野球を職業にできる世界。
+              それは本気でつくれると信じています。
+            </p>
+          </div>
+        </div>
+
+        <ol class="vision__steps" aria-label="いまと、目指す世界" data-i18n-attr="aria-label=vision.stepsLabel">
+          <li class="vision__step" data-reveal>
+            <span class="vision__step-key">Today</span>
+            <h3 class="vision__step-title" data-i18n="vision.s1t">野球が産業として成り立つ国</h3>
+            <p class="vision__step-text" data-i18n="vision.s1x">アメリカ・日本・韓国・台湾。満員の観客の前でプレーし、野球で生計を立てられる。</p>
+          </li>
+          <li class="vision__step" data-reveal>
+            <span class="vision__step-key">Gap</span>
+            <h3 class="vision__step-title" data-i18n="vision.s2t">野球はあっても、仕事にしにくい国</h3>
+            <p class="vision__step-text" data-i18n="vision.s2x">その他のアジアやヨーロッパの多く。他の競技に市場を取られ、プレー人口も少ない。</p>
+          </li>
+          <li class="vision__step vision__step--goal" data-reveal>
+            <span class="vision__step-key">Goal</span>
+            <h3 class="vision__step-title" data-i18n="vision.s3t">どの国でも、野球を職業に</h3>
+            <p class="vision__step-text" data-i18n="vision.s3x">ほとんどの国で野球が盛んになり、野球好きの誰もがその道で生きていける。</p>
+          </li>
+        </ol>
+
+        <div class="vision__close" data-reveal>
+          <p class="vision__mission" data-i18n="vision.mission">大きく言えば、<strong>「世界に野球を広める仕事」</strong>がしたい。</p>
+          <p class="vision__bridge" data-i18n="vision.bridge">
+            コードを書くことは、そのための手段のひとつです。アジアの選手と日本の独立リーグをつなぐことを目指した
+            <a href="#projects">ABBS</a> のように、まずは自分の手で動くものをつくりながら、技術とデータで野球の現場を支える力をつけていきます。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== Skills ==================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Skills</p>
+          <h2 class="section__title" data-i18n="skills.title">できること</h2>
+          <p class="section__lead" data-i18n="skills.lead">
+            日々の開発で使っている言語・技術と、得意な領域の知識です。
+          </p>
+        </header>
+
+        <div class="skills" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== Projects ==================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Projects</p>
+          <h2 class="section__title" data-i18n="projects.title">つくったもの</h2>
+          <p class="section__lead" data-i18n="projects.lead">公開しているアプリと、手で渡しているものです。まとまりごとに並べて、カテゴリでも絞れます。</p>
+        </header>
+
+        <div class="filters" id="projectFilters" data-reveal role="group" aria-label="プロジェクトの絞り込み" data-i18n-attr="aria-label=projects.filters">
+          <button class="filter is-active" type="button" data-filter="all" data-i18n="filter.all">すべて</button>
+          <button class="filter" type="button" data-filter="baseball" data-i18n="filter.baseball">野球</button>
+          <button class="filter" type="button" data-filter="ai" data-i18n="filter.ai">AI</button>
+          <button class="filter" type="button" data-filter="tools" data-i18n="filter.tools">ツール</button>
+        </div>
+
+        <div class="project-groups" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== Experience ==================== -->
+    <section class="section section--tint" id="experience">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Experience</p>
+          <h2 class="section__title" data-i18n="experience.title">これまでの道のり</h2>
+          <p class="section__lead" data-i18n="experience.lead">日本・ニュージーランド・マレーシアでの、学びと実践の記録です。</p>
+        </header>
+
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- ==================== Contact ==================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Contact</p>
+          <h2 class="section__title" data-i18n="contact.title">お話ししましょう</h2>
+          <p class="section__lead" data-i18n="contact.lead">
+            開発のご相談、スポーツとテクノロジーのこと、野球を世界に広めることについてなど、メールか下のフォームからお気軽にどうぞ。日本語・英語どちらでも大丈夫です。
+          </p>
+        </header>
+
+        <div class="contact">
+          <div class="contact__info" data-reveal>
+            <a class="contact__item" id="contactEmail" href="#">
+              <span class="contact__label">Email</span>
+              <span class="contact__value" data-contact="email"></span>
+            </a>
+            <a class="contact__item" id="contactGithub" href="#" target="_blank" rel="noopener noreferrer">
+              <span class="contact__label">GitHub</span>
+              <span class="contact__value" data-contact="github"></span>
+            </a>
+            <a class="contact__item" id="contactLinkedin" href="#" target="_blank" rel="noopener noreferrer">
+              <span class="contact__label">LinkedIn</span>
+              <span class="contact__value" data-contact="linkedin"></span>
+            </a>
+          </div>
+
+          <!-- 送信するとメールアプリが開きます（mailto） -->
+          <form class="form" id="contactForm" data-reveal novalidate>
+            <div class="form__row">
+              <label class="form__field">
+                <span class="form__label" data-i18n="form.name">お名前</span>
+                <input type="text" name="name" placeholder="お名前" required data-i18n-attr="placeholder=form.namePh">
+              </label>
+              <label class="form__field">
+                <span class="form__label" data-i18n="form.email">メール</span>
+                <input type="email" name="email" placeholder="you@example.com" required>
+              </label>
+            </div>
+
+            <label class="form__field">
+              <span class="form__label" data-i18n="form.subject">件名</span>
+              <input type="text" name="subject" placeholder="ご相談の内容" data-i18n-attr="placeholder=form.subjectPh">
+            </label>
+
+            <label class="form__field">
+              <span class="form__label" data-i18n="form.message">メッセージ</span>
+              <textarea name="message" rows="5" placeholder="お気軽にご連絡ください。" required data-i18n-attr="placeholder=form.messagePh"></textarea>
+            </label>
+
+            <div class="form__foot">
+              <button class="btn btn--primary" type="submit" data-i18n="form.send">送信する</button>
+              <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GitHub activity ==================== -->
+    <section class="section section--tint" id="activity">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">GitHub</p>
+          <h2 class="section__title" data-i18n="activity.title">手を動かした日</h2>
+          <p class="section__lead" data-i18n="activity.lead">
+            この1年、公開リポジトリにコードを入れた日です。
+          </p>
+        </header>
+
+        <div id="contrib" data-reveal></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== Footer ==================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="nav__mark">FY</span>
+        <p>安田 風介 / Fusuke Yasuda</p>
+      </div>
+
+      <nav class="footer__links" aria-label="フッターナビゲーション" data-i18n-attr="aria-label=footer.nav">
+        <a href="#about">About</a>
+        <a href="#vision">Vision</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <p class="footer__note">&copy; 2026 Fusuke Yasuda</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

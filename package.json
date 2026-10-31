@@ -1,0 +1,1 @@
+﻿{"name":"portfolio","private":true,"scripts":{"start":"serve src -l 43123"},"devDependencies":{"serve":"^14.2.5"}}
