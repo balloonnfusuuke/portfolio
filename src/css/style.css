@@ -642,6 +642,43 @@ button, input, textarea { font: inherit; color: inherit; }
   margin-top: var(--sp-10);
 }
 
+.hero__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: var(--hairline) solid var(--gold-line);
+  border-radius: 50%;
+  color: var(--ink);
+  background: transparent;
+  transition: transform var(--dur-2) var(--ease), background var(--dur-2) var(--ease),
+              color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease),
+              box-shadow var(--dur-2) var(--ease);
+}
+
+.hero__social-link svg { width: 20px; height: 20px; display: block; }
+
+.hero__social-link:hover,
+.hero__social-link:focus-visible {
+  background: var(--gold-ink);
+  border-color: var(--gold-ink);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+.hero__social-link:active { transform: translateY(0); }
+
 .hero__meta {
   display: flex;
   flex-wrap: wrap;
