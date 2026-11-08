@@ -1453,13 +1453,51 @@ button, input, textarea { font: inherit; color: inherit; }
   white-space: nowrap;
 }
 
+.project-card__desc { flex: 1; }
+
 .project-card__text {
   margin-top: var(--sp-4);
   font-size: var(--fs-sm);
   line-height: var(--lh-body);
   color: var(--ink-soft);
-  flex: 1;
 }
+
+/* 長い説明は自動で折りたたむ（行数はJSが実測して is-clamped を付ける） */
+.project-card__text.is-clamped {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+}
+
+.project-card__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold-ink);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease);
+}
+
+.project-card__more::after {
+  content: "▾";
+  font-size: 0.9em;
+  transition: transform var(--dur-2) var(--ease);
+}
+
+.project-card__more[aria-expanded="true"]::after { transform: rotate(180deg); }
+
+.project-card__more:hover,
+.project-card__more:focus-visible { color: var(--ink); }
 
 .project-card__tags {
   display: flex;

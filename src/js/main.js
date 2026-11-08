@@ -234,12 +234,44 @@ const OPENING = {
             (project.year ? '<span class="project-card__year">' + escapeHtml(project.year) + "</span>" : "") +
           "</div>" +
           (project.status ? '<p class="project-card__status">' + escapeHtml(project.status) + "</p>" : "") +
-          '<p class="project-card__text">' + escapeHtml(project.description) + "</p>" +
+          '<div class="project-card__desc">' +
+            '<p class="project-card__text">' + escapeHtml(project.description) + "</p>" +
+          "</div>" +
           '<ul class="project-card__tags">' + tags + "</ul>" +
           (links ? '<div class="project-card__links">' + links + "</div>" : "") +
         "</div>" +
       "</article>"
     );
+  }
+
+  /* 説明が長いカードだけ、自動で折りたたむ（行数は実測で決める） */
+  var CLAMP_LINES = 6;
+
+  function setupClamps(grid) {
+    $$(".project-card__text", grid).forEach(function (text) {
+      var desc = text.parentNode;
+      var more = desc.querySelector(".project-card__more");
+      if (more) more.remove();
+      text.classList.remove("is-clamped");
+
+      var lineHeight = parseFloat(window.getComputedStyle(text).lineHeight);
+      if (!lineHeight) return;
+      if (text.getBoundingClientRect().height / lineHeight <= CLAMP_LINES + 0.05) return;
+
+      text.classList.add("is-clamped");
+
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "project-card__more";
+      button.setAttribute("aria-expanded", "false");
+      button.textContent = I18N.t("card.more");
+      button.addEventListener("click", function () {
+        var collapsed = text.classList.toggle("is-clamped");
+        button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        button.textContent = I18N.t(collapsed ? "card.more" : "card.less");
+      });
+      desc.appendChild(button);
+    });
   }
 
   var currentFilter = "all";
@@ -289,6 +321,13 @@ const OPENING = {
         img.remove();
       });
     });
+
+    // 作成中セクションのカードは HTML 直書きなので、セクション全体を見る
+    var clampRoot = $("#projects") || grid;
+    setupClamps(clampRoot);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { setupClamps(clampRoot); });
+    }
 
     observe($$(".project-card", grid));
     $$(".project-card__thumb", grid).forEach(setupPromo);
