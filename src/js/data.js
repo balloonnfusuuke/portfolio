@@ -71,6 +71,9 @@ const PROJECTS = [
   },
   {
     title: "MMU BeeBoard",
+    promo: "beeboard", // assets/promo/beeboard.mp4（紹介動画・1:00・音声あり）・beeboard-loop.mp4（ホバー用）・beeboard-poster.jpg
+    promoModal: true, // 長い・音声ありの紹介動画はモーダルで再生
+    promoDuration: "1:00", // ボタンに出す長さ
     status: "公開中 · 公開版あり",
     categories: ["tools"],
     image: "assets/projects/beeboard.png", // 折り紙蜂のアイコンを16:10に置いた画像
