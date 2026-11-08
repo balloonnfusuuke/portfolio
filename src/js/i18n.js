@@ -220,7 +220,9 @@ var I18N = (function () {
       "wip.status": "Testing · Stage 1 (fastball) not yet passed",
       "wip.text": "A full-body physics simulation for finding new pitches. It drives research motion-capture data in MuJoCo, models the fingers, wrist, seams and friction, and is starting by checking whether it can reproduce a fastball.",
       "wip.more": "Peek inside the project",
-      "wip.alt": "PitchLab full-body simulation (trial f4 fastball)"
+      "wip.alt": "PitchLab full-body simulation (trial f4 fastball)",
+      "plate.status": "In progress · Public on GitHub",
+      "plate.text": "A pitch viewer that recreates a single Statcast pitch in 3D with Three.js. It draws the pitch trajectory, arrival point, and batted ball using a coordinate transform with the tip of home plate as the origin, and loads a stadium model built in Blender. Choosing a pitcher, batter, pitch type, and location reproduces one plate appearance, and the batter's decision is handled by a model built on the FastAPI side from 2024 real data. Across the 100 pitches bundled as samples, the calculated arrival point differs from the Statcast record by 0.120 cm on average."
   };
   Object.keys(EN_PAGES).forEach(function (k) { EN[k] = EN_PAGES[k]; });
 

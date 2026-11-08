@@ -388,9 +388,28 @@
                   <span class="project-card__year">2026</span>
                 </div>
                 <p class="project-card__status" data-i18n="wip.status">検証中・ステージ1（直球）が未達</p>
-                <p class="project-card__text" data-i18n="wip.text">投手の新しい変化球を探すための全身物理シミュレーション。MuJoCo上で研究用モーションキャプチャを動かし、指・手首・縫い目・摩擦まで再現して、まずは直球の再現から確かめています。</p>
+                <div class="project-card__desc">
+                  <p class="project-card__text" data-i18n="wip.text">投手の新しい変化球を探すための全身物理シミュレーション。MuJoCo上で研究用モーションキャプチャを動かし、指・手首・縫い目・摩擦まで再現して、まずは直球の再現から確かめています。</p>
+                </div>
                 <ul class="project-card__tags"><li>MuJoCo</li><li>Python</li><li>Biomechanics</li></ul>
                 <div class="project-card__links"><a class="project-card__link project-card__link--cta" href="pitchlab.html" data-i18n="wip.more">開発の裏側をのぞいてみる</a></div>
+              </div>
+            </article>
+            <article class="project-card is-visible">
+              <div class="project-card__thumb">
+                <span class="project-card__badge" data-i18n="wip.title">作成中</span>
+                <span class="project-card__initial" aria-hidden="true">プ</span>
+              </div>
+              <div class="project-card__body">
+                <div class="project-card__head">
+                  <h4 class="project-card__title">プレート先端</h4>
+                </div>
+                <p class="project-card__status" data-i18n="plate.status">作成中 · GitHubで公開</p>
+                <div class="project-card__desc">
+                  <p class="project-card__text" data-i18n="plate.text">Statcast の一球を Three.js で 3D 再現する投球ビューアです。ホームプレート先端を原点とした座標変換で投球軌道・到達位置・打球を描き、Blender 製の球場モデルを読み込みます。投手と打者、球種とコースを選ぶと 1 打席が再現され、打者の判断は FastAPI 側で 2024 年の実データから作ったモデルが担います。計算した到達位置と Statcast の記録との差は、同梱サンプル 100 球で平均 0.120 cm です。</p>
+                </div>
+                <ul class="project-card__tags"><li>Three.js</li><li>Next.js</li><li>TypeScript</li><li>FastAPI</li><li>Python</li><li>Statcast</li></ul>
+                <div class="project-card__links"><a class="project-card__link project-card__link--ext" href="https://github.com/balloonnfusuuke/haikyuu" target="_blank" rel="noopener noreferrer">GitHub</a></div>
               </div>
             </article>
           </div>
