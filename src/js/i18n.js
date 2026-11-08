@@ -289,6 +289,10 @@ var I18N = (function () {
         status: "Live · MMU students only",
         description: "A student-to-student errand board for MMU Cyberjaya. Post what you need, where to buy it, and a tip, and an approved student runner delivers it on foot across campus. Sign-in is by email link, and order status updates in real time.",
       },
+      "MMU BeeBoard": {
+        status: "Live · Public version available",
+        description: "A timetable and study-support web app I built for students at Multimedia University. It brings the timetable, assessments (quiz and test weightings and pass marks), deadlines, attendance, and study log onto one screen, and works backwards from my grades to the score I need on the final exam. Data is stored in the browser in a local-first design, and it is a PWA that opens offline. It works in both Japanese and English, and I publish a separate public version with personal information removed so other students can use it.",
+      },
       "ABBS": {
         status: "Prototype · Live on the web",
         description: "A scouting dashboard that connects Asian baseball players with Japan's independent leagues, with player-data visualization and team management.",
@@ -338,7 +342,7 @@ var I18N = (function () {
     PROJECT_GROUPS: [
       {
         title: "Running on campus",
-        lead: "The app I work on most. It has a spec, payments, delivery tracking, and end-to-end tests.",
+        lead: "Apps built for student life at MMU: an errand board with a spec, payments, delivery tracking, and end-to-end tests, and a study board for my timetable and grades.",
       },
       {
         title: "On the baseball field",
