@@ -396,9 +396,10 @@
               </div>
             </article>
             <article class="project-card is-visible">
-              <div class="project-card__thumb">
+              <div class="project-card__thumb has-image">
                 <span class="project-card__badge" data-i18n="wip.title">作成中</span>
                 <span class="project-card__initial" aria-hidden="true">プ</span>
+                <img class="project-card__img" src="assets/projects/plate-tip.jpg" alt="プレート先端の投球ビューア（Judge 対 Skubal の打席）" data-i18n-attr="alt=plate.alt" loading="lazy">
               </div>
               <div class="project-card__body">
                 <div class="project-card__head">
@@ -409,7 +410,7 @@
                   <p class="project-card__text" data-i18n="plate.text">Statcast の一球を Three.js で 3D 再現する投球ビューアです。ホームプレート先端を原点とした座標変換で投球軌道・到達位置・打球を描き、Blender 製の球場モデルを読み込みます。投手と打者、球種とコースを選ぶと 1 打席が再現され、打者の判断は FastAPI 側で 2024 年の実データから作ったモデルが担います。計算した到達位置と Statcast の記録との差は、同梱サンプル 100 球で平均 0.120 cm です。</p>
                 </div>
                 <ul class="project-card__tags"><li>Three.js</li><li>Next.js</li><li>TypeScript</li><li>FastAPI</li><li>Python</li><li>Statcast</li></ul>
-                <div class="project-card__links"><a class="project-card__link project-card__link--ext" href="https://github.com/balloonnfusuuke/haikyuu" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+                <div class="project-card__links"><a class="project-card__link project-card__link--ext" href="https://haikyuu-c5pioysua-fusukes-projects.vercel.app/" target="_blank" rel="noopener noreferrer" data-i18n="card.viewSite">サイトを見る</a><a class="project-card__link project-card__link--ext project-card__link--sub" href="https://github.com/balloonnfusuuke/haikyuu" target="_blank" rel="noopener noreferrer">GitHub</a></div>
               </div>
             </article>
           </div>
