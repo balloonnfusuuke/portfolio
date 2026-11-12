@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" font-family="'Segoe UI','Helvetica Neue',Arial,'Noto Sans',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="760" rx="24" fill="#f8fafc"/>
+  <text x="64" y="66" font-size="34" font-weight="700" fill="#0f172a">Local Secretary — System Architecture</text>
+  <text x="64" y="102" font-size="19" fill="#475569">Runs entirely on a single laptop. No data ever leaves the machine.</text>
+  <text x="1100" y="102" font-size="17" fill="#475569" text-anchor="middle">View &amp; instruct ↓</text>
+
+  <!-- Column 1: Inputs -->
+  <g>
+    <rect x="64" y="140" width="250" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <path d="M64 156 a16 16 0 0 1 16 -16 h218 a16 16 0 0 1 16 16 v34 h-250 z" fill="#0284c7"/>
+    <text x="189" y="173" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Inputs</text>
+    <rect x="84" y="210" width="210" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="189" y="245" font-size="18" fill="#0f172a" text-anchor="middle">Lecture recordings</text>
+    <rect x="84" y="280" width="210" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="189" y="315" font-size="18" fill="#0f172a" text-anchor="middle">Email</text>
+    <rect x="84" y="350" width="210" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="189" y="385" font-size="18" fill="#0f172a" text-anchor="middle">Schedules &amp; deadlines</text>
+    <rect x="84" y="420" width="210" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="189" y="455" font-size="18" fill="#0f172a" text-anchor="middle">Notes &amp; instructions</text>
+  </g>
+
+  <!-- Column 2: Ledger -->
+  <g>
+    <rect x="354" y="140" width="270" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <path d="M354 156 a16 16 0 0 1 16 -16 h238 a16 16 0 0 1 16 16 v34 h-270 z" fill="#7c3aed"/>
+    <text x="489" y="173" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Ledger (Obsidian)</text>
+    <rect x="374" y="210" width="230" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="489" y="245" font-size="16" fill="#0f172a" text-anchor="middle">Profile (long-term memory)</text>
+    <rect x="374" y="280" width="230" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="489" y="315" font-size="16" fill="#0f172a" text-anchor="middle">Future (radar)</text>
+    <rect x="374" y="350" width="230" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="489" y="385" font-size="16" fill="#0f172a" text-anchor="middle">Commitments (ledger)</text>
+    <rect x="374" y="420" width="230" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="489" y="455" font-size="16" fill="#0f172a" text-anchor="middle">Daily / Inbox / Queue</text>
+    <text x="489" y="505" font-size="15" fill="#64748b" text-anchor="middle">Source of truth: Markdown</text>
+  </g>
+
+  <!-- Column 3: Engine -->
+  <g>
+    <rect x="664" y="140" width="280" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <path d="M664 156 a16 16 0 0 1 16 -16 h248 a16 16 0 0 1 16 16 v34 h-280 z" fill="#d97706"/>
+    <text x="804" y="173" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Secretary Engine</text>
+    <rect x="684" y="210" width="240" height="48" rx="10" fill="#f1f5f9"/>
+    <text x="804" y="240" font-size="17" fill="#0f172a" text-anchor="middle">Morning check (7:00)</text>
+    <rect x="684" y="268" width="240" height="48" rx="10" fill="#f1f5f9"/>
+    <text x="804" y="298" font-size="17" fill="#0f172a" text-anchor="middle">Nightly batch (23:30)</text>
+    <rect x="684" y="326" width="240" height="48" rx="10" fill="#f1f5f9"/>
+    <text x="804" y="356" font-size="17" fill="#0f172a" text-anchor="middle">Weekly horizon scan</text>
+    <rect x="684" y="384" width="240" height="48" rx="10" fill="#f1f5f9"/>
+    <text x="804" y="414" font-size="15" fill="#0f172a" text-anchor="middle">Lecture ingest / email triage</text>
+    <rect x="684" y="442" width="240" height="48" rx="10" fill="#f1f5f9"/>
+    <text x="804" y="472" font-size="16" fill="#0f172a" text-anchor="middle">Decisions: single Qwen jobs</text>
+  </g>
+
+  <!-- Column 4: Platform -->
+  <g>
+    <rect x="984" y="140" width="232" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <path d="M984 156 a16 16 0 0 1 16 -16 h200 a16 16 0 0 1 16 16 v34 h-232 z" fill="#059669"/>
+    <text x="1100" y="173" font-size="22" font-weight="700" fill="#ffffff" text-anchor="middle">Platform</text>
+    <rect x="1004" y="210" width="192" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="1100" y="245" font-size="18" fill="#0f172a" text-anchor="middle">Needs attention</text>
+    <rect x="1004" y="280" width="192" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="1100" y="315" font-size="18" fill="#0f172a" text-anchor="middle">Notification feed</text>
+    <rect x="1004" y="350" width="192" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="1100" y="385" font-size="18" fill="#0f172a" text-anchor="middle">Future radar</text>
+    <rect x="1004" y="420" width="192" height="56" rx="10" fill="#f1f5f9"/>
+    <text x="1100" y="455" font-size="18" fill="#0f172a" text-anchor="middle">Instruction box</text>
+  </g>
+
+  <!-- Arrows -->
+  <line x1="318" y1="330" x2="348" y2="330" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="628" y1="330" x2="658" y2="330" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="948" y1="330" x2="978" y2="330" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1100 520 L 1100 540 L 489 540 L 489 524" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+  <text x="795" y="534" font-size="15" fill="#64748b" text-anchor="middle">Instructions are recorded in the ledger</text>
+
+  <!-- Base layer -->
+  <g>
+    <rect x="64" y="580" width="1152" height="116" rx="16" fill="#0f172a"/>
+    <text x="96" y="624" font-size="22" font-weight="700" fill="#ffffff">Local foundation — one laptop (Core Ultra 5 228V / Arc iGPU / 32GB shared memory)</text>
+    <text x="96" y="660" font-size="18" fill="#cbd5e1">OVMS + Qwen3.8-27B always on · watchdog every 5 min with auto-recovery · modes: Qwen / LM Studio / All off</text>
+  </g>
+</svg>
