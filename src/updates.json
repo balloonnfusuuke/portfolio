@@ -2,22 +2,145 @@
   {
     "date": "2026-11-12",
     "title": "更新履歴ページを追加",
+    "titleEn": "Added an update history page",
     "description": "サイトの更新履歴を一覧できるページと、トップの What's New 表示を追加した。",
     "category": "機能追加",
     "link": "updates.html"
   },
   {
     "date": "2026-11-12",
+    "title": "Local Secretary の全体構成図を追加",
+    "titleEn": "Added the Local Secretary architecture diagram",
+    "description": "詳細ページに全体構成図を掲載し、日本語・英語の切り替えに合わせて図も切り替わるようにした。",
+    "category": "コンテンツ更新",
+    "link": "localsecretary.html"
+  },
+  {
+    "date": "2026-11-12",
     "title": "Local Secretary ページを公開（Projects の「作成中」カテゴリー）",
+    "titleEn": "Published the Local Secretary page (Projects › In progress)",
     "description": "ローカルAI秘書プロジェクトの詳細ページを追加し、Projects の「作成中」にカードを置いた。",
     "category": "新規ページ",
     "link": "localsecretary.html"
   },
   {
-    "date": "2026-11-12",
-    "title": "Local Secretary の全体構成図を追加",
-    "description": "詳細ページに全体構成図を掲載し、日本語・英語の切り替えに合わせて図も切り替わるようにした。",
+    "date": "2026-11-09",
+    "title": "プレート先端（Plate Tip）を追加",
+    "titleEn": "Added Plate Tip",
+    "description": "Statcast の一球を 3D で再現する投球ビューアを、Projects の「作成中」に追加した。",
     "category": "コンテンツ更新",
-    "link": "localsecretary.html"
+    "link": "#project-plate-tip"
+  },
+  {
+    "date": "2026-11-09",
+    "title": "MMU BeeBoard を追加",
+    "titleEn": "Added MMU BeeBoard",
+    "description": "時間割と成績をまとめる学習ボードを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-mmu-beeboard"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "CampusRun を追加",
+    "titleEn": "Added CampusRun",
+    "description": "学生どうしでおつかいを頼み合える依頼ボードを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-campusrun"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "ABBS を追加",
+    "titleEn": "Added ABBS",
+    "description": "独立リーグとアジアの選手をつなぐスカウト向けダッシュボードを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-abbs"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "baseball_track を追加",
+    "titleEn": "Added baseball_track",
+    "description": "単一カメラの映像から球速と変化量を推定する投球解析ツールを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-baseball-track"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "baseball.analyze を追加",
+    "titleEn": "Added baseball.analyze",
+    "description": "得点期待値から作戦の貢献度を出す評価ツールを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-baseball-analyze"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "metrics を追加",
+    "titleEn": "Added metrics",
+    "description": "試合成績に重み付けをして選手をランキングする評価ツールを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-metrics"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "indiebaseball を追加",
+    "titleEn": "Added indiebaseball",
+    "description": "独立リーグ球団向けの成績管理アプリを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-indiebaseball"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "pitch を追加",
+    "titleEn": "Added pitch",
+    "description": "投球数の記録と登板スケジュールの管理ツールを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-pitch"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "rakuten を追加",
+    "titleEn": "Added rakuten",
+    "description": "ConnorsRSI(2) 戦略にもとづく株式の自動監視システムを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-rakuten"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "NFC名刺 を追加",
+    "titleEn": "Added the NFC business card",
+    "description": "自分のキャラクターでデザインした、NFC シール付きの名刺を Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-nfc-card"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "Baseball Trajectory Sim 3D を追加",
+    "titleEn": "Added Baseball Trajectory Sim 3D",
+    "description": "打球と投球の軌道を 3D の球場に描くシミュレーターを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-baseball-sim3d"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "Ballpark Buzz を追加",
+    "titleEn": "Added Ballpark Buzz",
+    "description": "応援チームを選んで短く投稿できる、位置情報SNSの試作を Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-ballpark-buzz"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "Emotional Hue を追加",
+    "titleEn": "Added Emotional Hue",
+    "description": "気分を色で記録するアプリを、Projects に追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-emotional-hue"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "PitchLab（作成中）のカードと詳細ページを追加",
+    "titleEn": "Added the PitchLab card and detail page (in progress)",
+    "description": "投手の新しい変化球を探す全身物理シミュレーションのカードと詳細ページを追加し、日英切り替えと紹介動画に対応した。",
+    "category": "新規ページ",
+    "link": "pitchlab.html"
   }
 ]

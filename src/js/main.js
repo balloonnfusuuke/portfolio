@@ -208,7 +208,9 @@ const OPENING = {
     }
 
     return (
-      '<article class="project-card' + (project.featured ? " project-card--lead" : "") + '" style="transition-delay: ' + (index % 3) * 70 + 'ms">' +
+      '<article class="project-card' + (project.featured ? " project-card--lead" : "") + '"' +
+        (project.id ? ' id="project-' + escapeHtml(project.id) + '"' : "") +
+        ' style="transition-delay: ' + (index % 3) * 70 + 'ms">' +
         '<div class="project-card__thumb' + (thumb ? " has-image" : "") + (pair ? " has-pair" : "") + '">' +
           '<span class="project-card__badge">' + escapeHtml(badge) + "</span>" +
           '<span class="project-card__initial" aria-hidden="true">' + escapeHtml(initial) + "</span>" +
@@ -331,6 +333,26 @@ const OPENING = {
 
     observe($$(".project-card", grid));
     $$(".project-card__thumb", grid).forEach(setupPromo);
+  }
+
+  /* 更新履歴から #project-xxx で来たとき、カードは JS で描画したあとにしか無い。
+     さらに画像・フォント・説明文の折りたたみで高さが変わるので、
+     落ち着いたタイミングでもう一度合わせる。 */
+  function scrollToProjectHash() {
+    var hash = window.location.hash;
+    if (hash.indexOf("#project-") !== 0) return;
+    var target = document.getElementById(hash.slice(1));
+    if (!target) return;
+
+    function jump() {
+      target.scrollIntoView({ behavior: "instant", block: "center" });
+    }
+
+    window.setTimeout(jump, 100);
+    window.addEventListener("load", function () { window.setTimeout(jump, 150); });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { window.setTimeout(jump, 200); });
+    }
   }
 
   function renderExperience() {
@@ -1341,6 +1363,7 @@ const OPENING = {
     renderExperience();
     setupContrib();
     if (window.UPDATES) UPDATES.mount($("#updatesList"), 5);
+    scrollToProjectHash();
 
     stampStagger();       // 並ぶ要素は少しずつ時差で
     observe();            // [data-reveal]（スキルカード含む）

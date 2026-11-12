@@ -55,6 +55,7 @@ const SKILLS = [
    status はカード上部に出る短い状況メモ（試作・デモデータなど。誇張しない表現で）。 */
 const PROJECTS = [
   {
+    id: "campusrun",
     title: "CampusRun",
     promo: "campusrun", // assets/promo/campusrun.mp4（紹介動画・2:13・音声あり）・campusrun-loop.mp4（ホバー用）・campusrun-poster.jpg
     promoModal: true, // 長い・音声ありの紹介動画は、カード内ではなくモーダル（全画面に近い表示・音声オン・コントロール付き）で再生
@@ -70,6 +71,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/campusrun-ai",
   },
   {
+    id: "mmu-beeboard",
     title: "MMU BeeBoard",
     promo: "beeboard", // assets/promo/beeboard.mp4（紹介動画・1:00・音声あり）・beeboard-loop.mp4（ホバー用）・beeboard-poster.jpg
     promoModal: true, // 長い・音声ありの紹介動画はモーダルで再生
@@ -84,6 +86,7 @@ const PROJECTS = [
     github: "",
   },
   {
+    id: "abbs",
     title: "ABBS",
     promo: "abbs", // assets/promo/abbs.mp4（紹介動画）・abbs-loop.mp4（ホバー用）・abbs-poster.jpg
     status: "試作 · Webで公開中",
@@ -96,6 +99,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/ABBS",
   },
   {
+    id: "baseball-track",
     title: "baseball_track",
     promo: "baseball_track", // assets/promo/baseball_track.mp4（紹介動画）・baseball_track-loop.mp4（ホバー用）・baseball_track-poster.jpg
     status: "試作 · 推定値は参考値",
@@ -108,6 +112,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/baseball_track",
   },
   {
+    id: "baseball-analyze",
     title: "baseball.analyze",
     promo: "baseball-analyze", // assets/promo/baseball-analyze.mp4（紹介動画）・baseball-analyze-loop.mp4（ホバー用）・baseball-analyze-poster.jpg
     status: "インターン経験をもとに開発 · 試作",
@@ -120,6 +125,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/baseball.analyze",
   },
   {
+    id: "metrics",
     title: "metrics",
     promo: "metrics", // assets/promo/metrics.mp4（紹介動画）・metrics-loop.mp4（ホバー用）・metrics-poster.jpg
     status: "試作 · デモデータ",
@@ -132,6 +138,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/metrics",
   },
   {
+    id: "indiebaseball",
     title: "indiebaseball",
     promo: "indiebaseball", // assets/promo/indiebaseball.mp4（紹介動画）・indiebaseball-loop.mp4（ホバー用）・indiebaseball-poster.jpg
     status: "試作 · 個人開発",
@@ -144,6 +151,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/indiebaseball",
   },
   {
+    id: "pitch",
     title: "pitch",
     promo: "pitch", // assets/promo/pitch.mp4（紹介動画）・pitch-loop.mp4（ホバー用）・pitch-poster.jpg
     status: "試作 · AIレポートは参考用",
@@ -156,6 +164,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/pitch",
   },
   {
+    id: "rakuten",
     title: "rakuten",
     promo: "rakuten", // assets/promo/rakuten.mp4（紹介動画）・rakuten-loop.mp4（ホバー用）・rakuten-poster.jpg
     status: "個人用の試作 · 画像はサンプルデータ",
@@ -168,6 +177,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/rakuten",
   },
   {
+    id: "nfc-card",
     title: "NFC名刺",
     featured: true,
     status: "実物 · NFCシール付き",
@@ -183,6 +193,7 @@ const PROJECTS = [
     github: "",
   },
   {
+    id: "baseball-sim3d",
     title: "Baseball Trajectory Sim 3D",
     status: "試作 · 2025年 · 物理モデルは簡易版",
     categories: ["baseball"],
@@ -195,6 +206,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/baseball1.github.io",
   },
   {
+    id: "ballpark-buzz",
     title: "Ballpark Buzz",
     status: "試作 · 2025年 · 公開デモなし",
     categories: ["baseball"],
@@ -207,6 +219,7 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/baloowanns.github.io",
   },
   {
+    id: "emotional-hue",
     title: "Emotional Hue",
     status: "試作 · 2025年 · 記録は端末内に保存",
     categories: ["tools"],

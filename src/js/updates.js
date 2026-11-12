@@ -2,6 +2,7 @@
    updates.js — 更新履歴（updates.json）を読み込んで一覧を描画します。
    - 履歴の正は updates.json だけ。HTML には書きません。
    - index.html（最新5件）と updates.html（全件）の両方で使います。
+   - 1件＝1行の細いリスト。行を押すと、その更新の対象（プロジェクトなど）へ移動します。
    - 言語を切り替えたときは、登録済みの一覧を描き直します。
    ========================================================================== */
 var UPDATES = (function () {
@@ -45,6 +46,20 @@ var UPDATES = (function () {
     return key ? t(key) : category;
   }
 
+  /* 英語表示のときは titleEn を使います（無ければ日本語のまま）。 */
+  function titleOf(item) {
+    if (window.I18N && I18N.lang === "en" && item.titleEn) return item.titleEn;
+    return item.title;
+  }
+
+  /* "#project-x" のようなページ内リンクは、呼び出し側の base を前につけます
+     （updates.html からは "index.html#project-x" にする）。 */
+  function resolveLink(link, base) {
+    if (!link) return "";
+    if (link.charAt(0) === "#") return (base || "") + link;
+    return link;
+  }
+
   /* 日付の新しい順。同じ日付は updates.json に書いた順を保ちます。 */
   function sortNewestFirst(items) {
     return items.slice().sort(function (a, b) {
@@ -55,31 +70,29 @@ var UPDATES = (function () {
     });
   }
 
-  function itemHtml(item) {
-    var link = item.link
-      ? '<a class="update__link" href="' + escapeHtml(item.link) + '">' +
-          escapeHtml(t("updates.open")) +
-        "</a>"
-      : "";
+  function itemHtml(item, base) {
+    var href = resolveLink(item.link, base);
+    var inner =
+      '<time class="update__date" datetime="' + escapeHtml(item.date) + '">' +
+        escapeHtml(formatDate(item.date)) +
+      "</time>" +
+      '<span class="update__title">' + escapeHtml(titleOf(item)) + "</span>" +
+      '<span class="update__badge">' + escapeHtml(categoryLabel(item.category)) + "</span>" +
+      (href ? '<span class="update__arrow" aria-hidden="true">→</span>' : "");
 
+    if (!href) {
+      return '<li class="update"><div class="update__row">' + inner + "</div></li>";
+    }
     return (
-      '<li class="update">' +
-        '<div class="update__meta">' +
-          '<time class="update__date" datetime="' + escapeHtml(item.date) + '">' +
-            escapeHtml(formatDate(item.date)) +
-          "</time>" +
-          '<span class="update__badge">' + escapeHtml(categoryLabel(item.category)) + "</span>" +
-        "</div>" +
-        '<h3 class="update__title">' + escapeHtml(item.title) + "</h3>" +
-        '<p class="update__text">' + escapeHtml(item.description) + "</p>" +
-        link +
-      "</li>"
+      '<li class="update"><a class="update__row" href="' + escapeHtml(href) + '">' +
+        inner +
+      "</a></li>"
     );
   }
 
-  function render(container, items) {
+  function render(container, items, base) {
     container.innerHTML = items.length
-      ? items.map(itemHtml).join("")
+      ? items.map(function (item) { return itemHtml(item, base); }).join("")
       : '<li class="update update--empty">' + escapeHtml(t("updates.empty")) + "</li>";
   }
 
@@ -96,18 +109,27 @@ var UPDATES = (function () {
       });
   }
 
-  /* container に描画します。limit を渡すと新しいものからその件数だけ。 */
-  function mount(container, limit) {
+  function itemsFor(entry, items) {
+    return entry.limit ? items.slice(0, entry.limit) : items;
+  }
+
+  /* container に描画します。limit を渡すと新しいものからその件数だけ。
+     options.base は "#..." リンクの前に付ける文字列（例: "index.html"）。 */
+  function mount(container, limit, options) {
     if (!container) return;
-    var entry = { el: container, limit: limit || 0 };
+    var entry = {
+      el: container,
+      limit: limit || 0,
+      base: (options && options.base) || ""
+    };
     mounted.push(entry);
 
     load()
       .then(function (items) {
-        render(container, entry.limit ? items.slice(0, entry.limit) : items);
+        render(entry.el, itemsFor(entry, items), entry.base);
       })
       .catch(function () {
-        container.innerHTML =
+        entry.el.innerHTML =
           '<li class="update update--empty">' + escapeHtml(t("updates.error")) + "</li>";
       });
   }
@@ -117,7 +139,7 @@ var UPDATES = (function () {
       load()
         .then(function (items) {
           mounted.forEach(function (entry) {
-            render(entry.el, entry.limit ? items.slice(0, entry.limit) : items);
+            render(entry.el, itemsFor(entry, items), entry.base);
           });
         })
         .catch(function () { /* 読み込めないときはそのまま */ });

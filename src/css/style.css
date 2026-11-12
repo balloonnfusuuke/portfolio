@@ -3069,104 +3069,85 @@ html[lang="en"] .about__id-en { font-family: var(--font-body); font-size: 0.9375
 
 /* ==========================================================================
    更新履歴（トップの What's New / updates.html）
-   updates.json から描画するタイムライン。日付・カテゴリー・本文だけを並べる
+   updates.json から描画する1行のリスト。行を押すと対象へ移動する
    ========================================================================== */
 .updates {
   list-style: none;
   margin: 0;
   padding: 0;
   max-width: 46em;
+  border-top: var(--hairline) solid var(--line);
 }
 
 .update {
-  position: relative;
-  margin-left: 0.45em;
-  padding: 0 0 var(--sp-7) 2.1em;
-  border-left: var(--hairline) solid var(--line-dark);
+  border-bottom: var(--hairline) solid var(--line);
 }
 
-.update:last-child {
-  padding-bottom: 0;
-  border-left-color: transparent;
-}
-
-.update::before {
-  content: "";
-  position: absolute;
-  left: -5px;
-  top: 0.55em;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 0 3px var(--bg);
-}
-
-.update__meta {
+.update__row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--sp-2) var(--sp-3);
-  margin-bottom: var(--sp-2);
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: 11px 6px;
+  color: inherit;
+  text-decoration: none;
+  transition: background var(--dur-2) var(--ease);
+}
+
+a.update__row:hover,
+a.update__row:focus-visible {
+  background: var(--gold-wash);
 }
 
 .update__date {
+  flex: 0 0 6.4em;
   font-family: var(--font-head);
   font-size: var(--fs-sm);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--ink-mute);
   font-variant-numeric: tabular-nums;
 }
 
-.update__badge {
-  display: inline-block;
-  padding: 3px 11px;
-  border: var(--hairline) solid var(--gold-line);
-  border-radius: var(--radius-pill);
-  background: var(--gold-wash);
-  color: var(--gold-ink);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  line-height: 1.6;
-}
-
 .update__title {
-  margin: 0 0 var(--sp-2);
-  font-size: 1.0625rem;
-  font-weight: 600;
+  flex: 1 1 auto;
+  font-size: var(--fs-sm);
+  font-weight: 500;
   line-height: var(--lh-snug);
 }
 
-.update__text {
-  margin: 0;
-  font-size: var(--fs-sm);
-  line-height: var(--lh-body);
-  color: var(--ink-soft);
+.update__badge {
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-ink);
+  white-space: nowrap;
 }
 
-.update__link {
-  display: inline-block;
-  margin-top: var(--sp-3);
-  font-size: var(--fs-sm);
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--gold-line);
+.update__arrow {
+  flex: 0 0 auto;
+  color: var(--ink-mute);
+  transition: transform var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
 }
 
-.update__link::after { content: " ↗"; }
-
-.update__link:hover,
-.update__link:focus-visible { color: var(--gold-ink); }
+a.update__row:hover .update__arrow,
+a.update__row:focus-visible .update__arrow {
+  transform: translateX(4px);
+  color: var(--gold-ink);
+}
 
 .update--empty {
-  margin-left: 0;
-  padding-left: 0;
-  border-left-color: transparent;
+  padding: 11px 6px;
   color: var(--ink-mute);
   font-size: var(--fs-sm);
 }
 
-.update--empty::before { display: none; }
-
 .updates__more { margin-top: var(--sp-8); }
+
+@media (max-width: 560px) {
+  .update__row {
+    flex-wrap: wrap;
+    gap: 2px var(--sp-3);
+  }
+  .update__date { flex: 0 0 auto; }
+  .update__badge { margin-left: auto; }
+  .update__title { flex: 1 1 100%; order: 3; }
+}
