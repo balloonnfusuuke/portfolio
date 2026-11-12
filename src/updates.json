@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-11-12",
+    "title": "更新履歴に全プロジェクトを1行ずつ並べる",
+    "titleEn": "Listed every project in the update history",
+    "description": "更新履歴に、これまでに追加したプロジェクトを1件1行で並べた。行を押すとそのプロジェクトへ移動する。",
+    "category": "機能追加",
+    "link": "updates.html"
+  },
+  {
+    "date": "2026-11-12",
     "title": "更新履歴ページを追加",
     "titleEn": "Added an update history page",
     "description": "サイトの更新履歴を一覧できるページと、トップの What's New 表示を追加した。",
@@ -25,6 +33,14 @@
   },
   {
     "date": "2026-11-09",
+    "title": "プレート先端にスクリーンショットと公開リンクを追加",
+    "titleEn": "Added a screenshot and live link to Plate Tip",
+    "description": "プレート先端のカードにスクリーンショットと公開サイトへのリンクを追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-plate-tip"
+  },
+  {
+    "date": "2026-11-09",
     "title": "プレート先端（Plate Tip）を追加",
     "titleEn": "Added Plate Tip",
     "description": "Statcast の一球を 3D で再現する投球ビューアを、Projects の「作成中」に追加した。",
@@ -33,11 +49,43 @@
   },
   {
     "date": "2026-11-09",
+    "title": "MMU BeeBoard に紹介動画を追加",
+    "titleEn": "Added a promo video to MMU BeeBoard",
+    "description": "MMU BeeBoard のカードに紹介動画を追加した。",
+    "category": "コンテンツ更新",
+    "link": "#project-mmu-beeboard"
+  },
+  {
+    "date": "2026-11-09",
     "title": "MMU BeeBoard を追加",
     "titleEn": "Added MMU BeeBoard",
     "description": "時間割と成績をまとめる学習ボードを、Projects に追加した。",
     "category": "コンテンツ更新",
     "link": "#project-mmu-beeboard"
+  },
+  {
+    "date": "2026-11-09",
+    "title": "長いプロジェクト説明を折りたたむ",
+    "titleEn": "Collapsed long project descriptions",
+    "description": "長いプロジェクト説明を折りたたみ、カードの高さを揃えた。",
+    "category": "デザイン",
+    "link": "#projects"
+  },
+  {
+    "date": "2026-11-01",
+    "title": "ヒーローにSNSアイコンリンクを追加",
+    "titleEn": "Added social icon links to the hero",
+    "description": "ヒーローに Instagram・GitHub・LinkedIn・Facebook のアイコンリンクを追加した。",
+    "category": "デザイン",
+    "link": "#hero"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "ポートフォリオサイトを公開",
+    "titleEn": "Published the portfolio site",
+    "description": "作品ごとのまとまり、キャラクター、NFC名刺を含むポートフォリオサイトを公開した。",
+    "category": "新規ページ",
+    "link": "index.html"
   },
   {
     "date": "2026-10-31",
@@ -113,6 +161,22 @@
   },
   {
     "date": "2026-10-31",
+    "title": "NFC名刺を表と裏で回り続けるように",
+    "titleEn": "Made the NFC card spin front and back",
+    "description": "NFC名刺が表と裏で回り続けるようにした。",
+    "category": "デザイン",
+    "link": "#project-nfc-card"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "回る名刺をサイトの紙面の中に配置",
+    "titleEn": "Placed the spinning card inside the page layout",
+    "description": "回る名刺をサイトの紙面の中に置き、紺地に溶けないようにした。",
+    "category": "デザイン",
+    "link": "#project-nfc-card"
+  },
+  {
+    "date": "2026-10-31",
     "title": "Baseball Trajectory Sim 3D を追加",
     "titleEn": "Added Baseball Trajectory Sim 3D",
     "description": "打球と投球の軌道を 3D の球場に描くシミュレーターを、Projects に追加した。",
@@ -142,5 +206,13 @@
     "description": "投手の新しい変化球を探す全身物理シミュレーションのカードと詳細ページを追加し、日英切り替えと紹介動画に対応した。",
     "category": "新規ページ",
     "link": "pitchlab.html"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "package.json の BOM を外して Vercel のビルドを修正",
+    "titleEn": "Removed the BOM from package.json to fix the Vercel build",
+    "description": "package.json の先頭の BOM を外し、Vercel のビルドが通るようにした。",
+    "category": "修正",
+    "link": null
   }
 ]

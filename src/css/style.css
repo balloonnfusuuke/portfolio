@@ -3075,7 +3075,6 @@ html[lang="en"] .about__id-en { font-family: var(--font-body); font-size: 0.9375
   list-style: none;
   margin: 0;
   padding: 0;
-  max-width: 46em;
   border-top: var(--hairline) solid var(--line);
 }
 
