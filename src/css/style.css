@@ -3020,6 +3020,8 @@ html[lang="en"] .about__id-en { font-family: var(--font-body); font-size: 0.9375
    白い角丸の枠は全カード共通の .project-card__thumb::after（白85%の飾り枠）。
    他のカードは明るいスクリーンショットなので目立たないが、PitchLab の暗い画像では浮いて見えるため、このカードだけ消す。 */
 .project-card--wip .project-card__thumb::after { display: none; }
+/* 画像のない作成中カード（Local Secretary）は、他のカードと同じ飾り枠を出す */
+.project-card--wip .project-card__thumb:not(.has-image)::after { display: block; }
 
 /* サムネイル中央の再生マーク（動画があることのヒント・飾り） */
 .project-card__peek {
