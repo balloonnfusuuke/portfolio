@@ -136,6 +136,21 @@ var I18N = (function () {
     "activity.dow1": "Mon",
     "activity.dow3": "Wed",
     "activity.dow5": "Fri",
+
+    "updates.title": "Update history",
+    "updates.lead": "Site updates, newest first.",
+    "updates.all": "See all updates",
+    "updates.open": "Open the page",
+    "updates.empty": "No updates yet.",
+    "updates.error": "The update history couldn't be loaded.",
+    "updates.back": "← Back to portfolio",
+    "updates.cat.new": "New page",
+    "updates.cat.feature": "Feature",
+    "updates.cat.content": "Content",
+    "updates.cat.design": "Design",
+    "updates.cat.fix": "Fix",
+    "updates.meta.title": "Update history | Fusuke Yasuda",
+    "updates.meta.description": "Update history for this portfolio site: new pages, features, content updates, design changes and fixes, newest first.",
   };
 
   /* --- 作成中セクションと PitchLab ページ（英語） --- */
@@ -331,6 +346,19 @@ var I18N = (function () {
     "activity.dow1": "月",
     "activity.dow3": "水",
     "activity.dow5": "金",
+
+    "updates.title": "更新履歴",
+    "updates.lead": "サイトの更新履歴です。新しいものから順に並べています。",
+    "updates.all": "すべての更新履歴を見る",
+    "updates.open": "関連ページを見る",
+    "updates.empty": "まだ更新履歴がありません。",
+    "updates.error": "更新履歴を読み込めませんでした。",
+    "updates.back": "← ポートフォリオに戻る",
+    "updates.cat.new": "新規ページ",
+    "updates.cat.feature": "機能追加",
+    "updates.cat.content": "コンテンツ更新",
+    "updates.cat.design": "デザイン",
+    "updates.cat.fix": "修正",
   };
 
   /* --- data.js の英語版（日本語は data.js の元データ） ------------------------ */

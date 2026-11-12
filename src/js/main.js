@@ -1340,6 +1340,7 @@ const OPENING = {
     renderProjects("all");
     renderExperience();
     setupContrib();
+    if (window.UPDATES) UPDATES.mount($("#updatesList"), 5);
 
     stampStagger();       // 並ぶ要素は少しずつ時差で
     observe();            // [data-reveal]（スキルカード含む）

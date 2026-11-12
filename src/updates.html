@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja" data-i18n-page="updates">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>更新履歴｜安田 風介</title>
+  <meta name="description" content="ポートフォリオサイトの更新履歴です。新規ページ・機能追加・コンテンツ更新・デザイン・修正を、新しいものから順にまとめています。">
+  <meta property="og:title" content="更新履歴｜安田 風介">
+  <meta property="og:description" content="ポートフォリオサイトの更新履歴。新しいものから順にまとめています。">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23fff' stroke='%231B2A4A' stroke-width='6'/%3E%3Cpath d='M16 32C36 44 64 44 84 32M16 68C36 56 64 56 84 68' fill='none' stroke='%23C9A227' stroke-width='6' stroke-dasharray='5 3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pitchlab.css">
+  <script>
+    (function () {
+      var lang = "ja";
+      try {
+        var saved = window.localStorage.getItem("fy-lang");
+        if (saved === "ja" || saved === "en") { lang = saved; }
+        else {
+          var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "ja"];
+          lang = /^ja\b/i.test(String(list[0] || "")) ? "ja" : "en";
+        }
+      } catch (e) { /* noop */ }
+      window.__lang = lang;
+      document.documentElement.lang = lang;
+    })();
+  </script>
+</head>
+<body class="pl">
+  <header class="pl-top">
+    <div class="container pl-top__inner">
+      <a class="pl-back" href="index.html#updates" data-i18n="updates.back">← ポートフォリオに戻る</a>
+      <div class="pl-top__right">
+        <div class="lang-switch" role="group" aria-label="表示言語 / Language">
+          <button class="lang-switch__btn" type="button" data-lang="ja" lang="ja" aria-label="日本語で表示">JA</button>
+          <span class="lang-switch__sep" aria-hidden="true">/</span>
+          <button class="lang-switch__btn" type="button" data-lang="en" lang="en" aria-label="View in English">EN</button>
+        </div>
+        <span class="pl-top__mark">FY</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== ヒーロー ==================== -->
+    <section class="pl-hero">
+      <div class="container">
+        <p class="section__eyebrow">Updates</p>
+        <h1 class="pl-hero__title" data-i18n="updates.title">更新履歴</h1>
+        <p class="pl-hero__lead" data-i18n="updates.lead">サイトの更新履歴です。新しいものから順に並べています。</p>
+      </div>
+    </section>
+
+    <!-- ==================== 一覧（updates.json から描画） ==================== -->
+    <section class="pl-sec container">
+      <ol class="updates" id="updatesList"></ol>
+    </section>
+
+    <div class="container pl-end">
+      <a class="pl-back pl-back--big" href="index.html#updates" data-i18n="updates.back">← ポートフォリオに戻る</a>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container footer__inner"><p class="footer__note">&copy; 2026 Fusuke Yasuda</p></div></footer>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/updates.js"></script>
+  <script>UPDATES.mount(document.getElementById("updatesList"));</script>
+</body>
+</html>

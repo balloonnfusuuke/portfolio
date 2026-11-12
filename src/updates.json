@@ -1,0 +1,23 @@
+[
+  {
+    "date": "2026-11-12",
+    "title": "更新履歴ページを追加",
+    "description": "サイトの更新履歴を一覧できるページと、トップの What's New 表示を追加した。",
+    "category": "機能追加",
+    "link": "updates.html"
+  },
+  {
+    "date": "2026-11-12",
+    "title": "Local Secretary ページを公開（Projects の「作成中」カテゴリー）",
+    "description": "ローカルAI秘書プロジェクトの詳細ページを追加し、Projects の「作成中」にカードを置いた。",
+    "category": "新規ページ",
+    "link": "localsecretary.html"
+  },
+  {
+    "date": "2026-11-12",
+    "title": "Local Secretary の全体構成図を追加",
+    "description": "詳細ページに全体構成図を掲載し、日本語・英語の切り替えに合わせて図も切り替わるようにした。",
+    "category": "コンテンツ更新",
+    "link": "localsecretary.html"
+  }
+]

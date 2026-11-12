@@ -141,6 +141,7 @@
         <a class="nav__link" href="#projects">Projects</a>
         <a class="nav__link" href="#experience">Experience</a>
         <a class="nav__link" href="#contact">Contact</a>
+        <a class="nav__link" href="updates.html">Updates</a>
       </nav>
 
       <div class="lang-switch" id="langSwitch" role="group" aria-label="表示言語 / Language">
@@ -523,6 +524,23 @@
       </div>
     </section>
 
+    <!-- ==================== What's New（updates.json から最新5件） ==================== -->
+    <section class="section" id="updates">
+      <div class="container">
+        <header class="section__head" data-reveal>
+          <p class="section__eyebrow">Updates</p>
+          <h2 class="section__title" data-i18n="updates.title">更新履歴</h2>
+          <p class="section__lead" data-i18n="updates.lead">サイトの更新履歴です。新しいものから順に並べています。</p>
+        </header>
+
+        <ol class="updates" id="updatesList"></ol>
+
+        <p class="updates__more" data-reveal>
+          <a class="btn btn--outline" href="updates.html" data-i18n="updates.all">すべての更新履歴を見る</a>
+        </p>
+      </div>
+    </section>
+
   </main>
 
   <!-- ==================== Footer ==================== -->
@@ -540,6 +558,7 @@
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
+        <a href="updates.html">Updates</a>
       </nav>
 
       <p class="footer__note">&copy; 2026 Fusuke Yasuda</p>
@@ -548,6 +567,7 @@
 
   <script src="js/data.js"></script>
   <script src="js/i18n.js"></script>
+  <script src="js/updates.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

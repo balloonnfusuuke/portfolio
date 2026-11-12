@@ -3066,3 +3066,107 @@ html[lang="en"] .about__id-en { font-family: var(--font-body); font-size: 0.9375
   .project-card__link--cta, .project-card__peek { transition: none; }
   .project-card--wip:hover .project-card__link--cta { transform: none; }
 }
+
+/* ==========================================================================
+   更新履歴（トップの What's New / updates.html）
+   updates.json から描画するタイムライン。日付・カテゴリー・本文だけを並べる
+   ========================================================================== */
+.updates {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 46em;
+}
+
+.update {
+  position: relative;
+  margin-left: 0.45em;
+  padding: 0 0 var(--sp-7) 2.1em;
+  border-left: var(--hairline) solid var(--line-dark);
+}
+
+.update:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.update::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 0.55em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.update__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+
+.update__date {
+  font-family: var(--font-head);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+}
+
+.update__badge {
+  display: inline-block;
+  padding: 3px 11px;
+  border: var(--hairline) solid var(--gold-line);
+  border-radius: var(--radius-pill);
+  background: var(--gold-wash);
+  color: var(--gold-ink);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+.update__title {
+  margin: 0 0 var(--sp-2);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: var(--lh-snug);
+}
+
+.update__text {
+  margin: 0;
+  font-size: var(--fs-sm);
+  line-height: var(--lh-body);
+  color: var(--ink-soft);
+}
+
+.update__link {
+  display: inline-block;
+  margin-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-line);
+}
+
+.update__link::after { content: " ↗"; }
+
+.update__link:hover,
+.update__link:focus-visible { color: var(--gold-ink); }
+
+.update--empty {
+  margin-left: 0;
+  padding-left: 0;
+  border-left-color: transparent;
+  color: var(--ink-mute);
+  font-size: var(--fs-sm);
+}
+
+.update--empty::before { display: none; }
+
+.updates__more { margin-top: var(--sp-8); }
