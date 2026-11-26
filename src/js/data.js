@@ -71,21 +71,6 @@ const PROJECTS = [
     github: "https://github.com/balloonnfusuuke/campusrun-ai",
   },
   {
-    id: "mmu-beeboard",
-    title: "MMU BeeBoard",
-    promo: "beeboard", // assets/promo/beeboard.mp4（紹介動画・1:00・音声あり）・beeboard-loop.mp4（ホバー用）・beeboard-poster.jpg
-    promoModal: true, // 長い・音声ありの紹介動画はモーダルで再生
-    promoDuration: "1:00", // ボタンに出す長さ
-    status: "公開中 · 公開版あり",
-    categories: ["tools"],
-    image: "assets/projects/beeboard.png", // 折り紙蜂のアイコンを16:10に置いた画像
-    description:
-      "Multimedia University の学生向けに自作した、時間割と学習支援の Web アプリです。時間割・評価（クイズやテストの配点と合格ライン）・締切・出席・学習ログを 1 画面に集約し、自分の成績から最終試験で必要な点数を逆算できます。データはブラウザ内に保存する local-first 設計で、オフラインでも開ける PWA。日英 2 言語対応。他の学生も使えるよう、個人情報を除いた公開版を別に公開しています。",
-    tags: ["HTML", "CSS", "JavaScript", "PWA"],
-    live: "https://mmu-beeboard.vercel.app/",
-    github: "",
-  },
-  {
     id: "abbs",
     title: "ABBS",
     promo: "abbs", // assets/promo/abbs.mp4（紹介動画）・abbs-loop.mp4（ホバー用）・abbs-poster.jpg
@@ -240,8 +225,8 @@ const PROJECT_GROUPS = [
   {
     id: "campus",
     title: "キャンパスで動いているもの",
-    lead: "MMU の学生生活のために作ったアプリです。仕様・決済・配達の追跡・E2Eテストまで入れた依頼ボードと、時間割と成績をまとめる学習ボード。",
-    titles: ["CampusRun", "MMU BeeBoard"],
+    lead: "MMU の学生生活のために作ったアプリです。仕様・決済・配達の追跡・E2Eテストまで入れた依頼ボード。",
+    titles: ["CampusRun"],
   },
   {
     id: "baseball",

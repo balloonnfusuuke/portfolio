@@ -757,6 +757,22 @@ const OPENING = {
     });
   }
 
+  /* Zephyr のカードは HTML 直書きなので、紹介動画のボタンをここで有効にします。
+     読み上げ文言はタイトルと長さを差し込むため、JS 側で言語に合わせます。 */
+  function setupZephyrPromo() {
+    $$("#zephyr .project-card__thumb").forEach(setupPromo);
+    labelZephyrPromo();
+  }
+
+  function labelZephyrPromo() {
+    $$("#zephyr .project-card__play").forEach(function (button) {
+      button.setAttribute("aria-label", I18N.t("card.watchPromoLabel", {
+        title: button.getAttribute("data-title"),
+        duration: button.getAttribute("data-duration") || ""
+      }));
+    });
+  }
+
   /* ----------------------------------------------------------------------
      6c. 紹介動画のモーダル（promoModal: true のプロジェクト）
      - 長い・音声ありの動画を大きく表示。ユーザーの操作で開くので音声オンで再生できる
@@ -1360,6 +1376,7 @@ const OPENING = {
     renderStats();
     renderSkills();
     renderProjects("all");
+    setupZephyrPromo();
     renderExperience();
     setupContrib();
     if (window.UPDATES) UPDATES.mount($("#updatesList"), 5);
@@ -1388,6 +1405,7 @@ const OPENING = {
       renderStats();
       renderSkills();
       renderProjects(currentFilter);
+      labelZephyrPromo();
       renderExperience();
       drawContrib();
       $$("#statsList .stats__value").forEach(function (el) {
