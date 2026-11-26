@@ -3194,6 +3194,28 @@ a.update__row:focus-visible .update__arrow {
   transform: scale(1.06);
 }
 
+/* Zephyr AI：スマホ画面のスクリーンショット2枚を左右に並べる */
+.zephyr-shots {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 3%, 14px);
+  padding: 18px;
+}
+
+.zephyr-shots img {
+  flex: none;
+  height: 100%;
+  width: auto;
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-md);
+}
+
+/* 枠がスクリーンショットの上を横切らないよう、このカードでは枠を固定する */
+.project-card:hover .project-card__thumb.has-shots::after { inset: 16px; }
+
 /* ステータスのバッジ（既存の .project-card__status と同じ位置に置く） */
 .zephyr-card__status {
   display: inline-flex;

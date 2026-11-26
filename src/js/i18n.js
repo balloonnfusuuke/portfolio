@@ -92,6 +92,8 @@ var I18N = (function () {
     "zephyr.p1.status": "Running (private)",
     "zephyr.p1.text": "A personal AI console that runs on a home server. A local LLM on a Surface Laptop Go (Ubuntu Server) answers through a gateway I built, using tools such as web search. It is reachable only over Tailscale, and is not public.",
     "zephyr.p1.nolink": "Private use only, so there is no public link",
+    "zephyr.p1.altChat": "The Zephyr AI chat screen",
+    "zephyr.p1.altModes": "The Zephyr AI mode selection screen",
     "zephyr.p2.status": "Public",
     "zephyr.p2.alt": "Screenshot of MMU BeeBoard",
     "zephyr.p2.text": "A timetable and study-support app for Multimedia University students. It brings the timetable, a grade simulator, and attendance and study logs together in one PWA.",

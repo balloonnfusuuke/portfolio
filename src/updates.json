@@ -1,5 +1,37 @@
 [
   {
+    "date": "2026-11-26",
+    "title": "Zephyr AI のカードに画面写真を追加",
+    "titleEn": "Added app screenshots to the Zephyr AI card",
+    "description": "Zephyr AI のカードのサムネイルに、チャット画面とモード選択画面の2枚を左右に並べた。",
+    "category": "デザイン",
+    "link": "#zephyr"
+  },
+  {
+    "date": "2026-11-26",
+    "title": "MMU BeeBoard を Zephyr に移行",
+    "titleEn": "Moved MMU BeeBoard into Zephyr",
+    "description": "Projects にあった MMU BeeBoard のカードを Zephyr に移した。スクリーンショットと紹介動画はそのまま使っている。",
+    "category": "コンテンツ更新",
+    "link": "#zephyr"
+  },
+  {
+    "date": "2026-11-26",
+    "title": "Zephyr を Projects の上に移動",
+    "titleEn": "Moved Zephyr above Projects",
+    "description": "ブランドのセクションを、作品一覧（Projects）より前に移動した。",
+    "category": "デザイン",
+    "link": "#zephyr"
+  },
+  {
+    "date": "2026-11-26",
+    "title": "Zephyr セクションを追加",
+    "titleEn": "Added the Zephyr section",
+    "description": "自社ブランド Zephyr のセクションを追加した。ロゴと、Zephyr AI・MMU BeeBoard・CrossCampus の3プロダクトをカードで並べている。",
+    "category": "コンテンツ更新",
+    "link": "#zephyr"
+  },
+  {
     "date": "2026-11-12",
     "title": "更新履歴に全プロジェクトを1行ずつ並べる",
     "titleEn": "Listed every project in the update history",
