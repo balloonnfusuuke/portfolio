@@ -3150,3 +3150,86 @@ a.update__row:focus-visible .update__arrow {
   .update__badge { margin-left: auto; }
   .update__title { flex: 1 1 100%; order: 3; }
 }
+
+/* ==========================================================================
+   Zephyr（ブランドとプロダクト）
+   既存のカード（.project-card）とセクション見出しをそのまま使い、
+   このセクション固有の差分だけをここに足しています。
+   ========================================================================== */
+#zephyr {
+  --zephyr: #1D5BFF;                       /* ブランドカラー（ロゴと同じ青） */
+}
+
+/* ロゴの帯。支給されたPNGはエンブレムとワードマークが組み合わさった
+   ロックアップなので、1枚のまま見せています。
+   画像の左右に余白が入っている分だけ、見た目の中心をわずかに補正します。 */
+.zephyr-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--sp-9);
+  padding: clamp(var(--sp-6), 4vw, var(--sp-9)) var(--sp-6);
+  background: var(--card);
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.zephyr-brand__logo {
+  width: min(420px, 82%);
+  height: auto;
+  transform: translateX(1.2%);
+}
+
+/* 画像エリアのプレースホルダに、エンブレムを薄く置く */
+.zephyr-card__mark {
+  width: clamp(56px, 26%, 96px);
+  height: auto;
+  opacity: 0.3;
+  transition: opacity var(--dur-3) var(--ease), transform var(--dur-3) var(--ease);
+}
+
+.zephyr-card:hover .zephyr-card__mark {
+  opacity: 0.42;
+  transform: scale(1.06);
+}
+
+/* ステータスのバッジ（既存の .project-card__status と同じ位置に置く） */
+.zephyr-card__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-top: var(--sp-3);
+  padding: 4px 12px;
+  background: var(--card-2);
+  border: var(--hairline) solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.zephyr-card__status::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+/* 稼働中・公開中はブランドカラー、開発中は既存の金 */
+.zephyr-card__status--live::before { background: var(--zephyr); }
+
+/* リンクを持たないカードの、リンク欄に置く注記 */
+.zephyr-card__note {
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+}
+
+@media (max-width: 480px) {
+  .zephyr-brand { padding: var(--sp-6) var(--sp-5); }
+}
